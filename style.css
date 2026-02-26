@@ -47,19 +47,74 @@ body {
   z-index: 1000;
 }
 
+/* =========================
+   LOGO – CORRECT STACKING
+========================= */
+
 .logo {
-  font-size: 2.8rem;
-  font-weight: 800;
-  color: var(--text-color);
-  transition: 0.3s ease;
+  position: relative;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 5rem;
+  height: 5rem;
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+  background: transparent;
+  transition: 0.3s ease-in-out;
 }
 
-.logo:hover {
-  transform: scale(1.05);
+/* Orange disk */
+.logo::before {
+  content: "";
+  position: absolute;
+  width: 2.8rem;
+  height: 2.8rem;
+  background: var(--main-color);
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.logo span {
+  position: relative;
+  z-index: 2;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: black;
+  transition: 0.3s ease-in-out;
+}
+
+.logo:hover span {
   color: var(--main-color);
 }
 
-.logo span,
+/* Hover glow */
+.logo:hover {
+  background-color: var(--main-color);   /* THIS is what you're missing */
+  transform: scale(1.1) translateY(-3px);
+  box-shadow:
+    0 0 25px var(--main-color),
+    0 0 50px var(--main-color),
+    0 0 75px var(--main-color);
+}
+
+/* Make disk turn white on hover */
+.logo:hover::before {
+  background: white;
+}
+
+.logo:hover img {
+  filter: brightness(0) invert(0); /* restores original svg color */
+}
+
+.logo img {
+  width: 40px; /* adjust if needed */
+  height: auto;
+  display: block;
+  /* filter: brightness(0) invert(1); makes white if svg is dark */
+  transition: 0.3s ease-in-out;
+}
+
 .home-content span,
 .about-content span {
   background: linear-gradient(270deg, #df8908 10%, #ff1d15 100%);
