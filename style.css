@@ -312,6 +312,7 @@ body {
   background: var(--second-bg-color);
   padding: 6rem clamp(4%, 8vw, 10%);
   flex-wrap: wrap;
+  scroll-margin-top: 6rem;
 }
 
 /* Circular Image Container */
@@ -347,7 +348,7 @@ body {
 }
 
 .about-content h2 {
-  font-size: clamp(4rem, 6vw, 6rem);
+  font-size: clamp(3rem, 4vw, 4.5rem);
   margin-bottom: 2rem;
 }
 
@@ -359,6 +360,27 @@ body {
 
 .about-content .btn {
   margin-top: 1rem;
+}
+
+.about-stack {
+  margin-top: 2rem;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.about-stack span {
+  padding: 0.6rem 1.4rem;
+  border: 1px solid var(--main-color);
+  border-radius: 2rem;
+  font-size: 1.4rem;
+  color: var(--main-color);
+  transition: 0.3s ease;
+}
+
+.about-stack span:hover {
+  background: var(--main-color);
+  color: black;
 }
 
 ::-webkit-scrollbar {
