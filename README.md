@@ -7,8 +7,13 @@ Designed with a dark UI aesthetic, glowing hover interactions, and a refined lay
 
 ## 🌐 Live Website
 
+=========================================
 🔗 **View the Portfolio:**
-👉 https://your-live-url-here.com
+click [here](https://FHobbs8030.github.io/responsive-portfolio/)
+
+
+
+=========================================
 
 > Replace this URL with your deployed site (GitHub Pages, Netlify, etc.)
 
