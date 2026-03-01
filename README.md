@@ -16,8 +16,6 @@ click [here](https://FHobbs8030.github.io/responsive-portfolio/)
 
 =========================================
 
-> Replace this URL with your deployed site (GitHub Pages, Netlify, etc.)
-
 ---
 
 ## 📸 Project Preview Images
