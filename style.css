@@ -1,7 +1,6 @@
 /* =========================
    GLOBAL RESET
 ========================= */
-
 * {
   margin: 0;
   padding: 0;
@@ -15,7 +14,7 @@
   --bg-color: #080808;
   --second-bg-color: #101010;
   --text-color: #ffffff;
-  --text-soft: rgba(255,255,255,0.85);
+  --text-soft: rgba(255, 255, 255, 0.85);
   --main-color: #ea580c;
 }
 
@@ -24,6 +23,8 @@ html {
 }
 
 body {
+  scroll-padding-top: 120px;
+  min-height: 100vh;
   background-color: var(--bg-color);
   color: var(--text-color);
   overflow-x: hidden;
@@ -32,7 +33,6 @@ body {
 /* =========================
    HEADER
 ========================= */
-
 .header {
   position: fixed;
   top: 0;
@@ -51,7 +51,6 @@ body {
 /* =========================
    LOGO – CORRECT STACKING
 ========================= */
-
 .logo {
   position: relative;
   display: inline-flex;
@@ -105,11 +104,11 @@ body {
 }
 
 .logo:hover img {
-  filter: brightness(0) invert(0); /* restores original svg color */
+  filter: brightness(0) invert(0); 
 }
 
 .logo img {
-  width: 40px; /* adjust if needed */
+  width: 40px; 
   height: auto;
   display: block;
   /* filter: brightness(0) invert(1); makes white if svg is dark */
@@ -151,7 +150,6 @@ body {
 /* =========================
    BUTTONS
 ========================= */
-
 .gradient-btn {
   font-size: 1.6rem;
   padding: 1.1rem 2.4rem;
@@ -171,7 +169,7 @@ body {
 
 .btn-outline {
   padding: 1rem 2.4rem;
-  border-radius: 3rem; /* match primary */
+  border-radius: 3rem; 
   border: 2px solid var(--main-color);
   background: transparent;
   color: var(--main-color);
@@ -187,13 +185,12 @@ body {
 /* =========================
    HERO SECTION
 ========================= */
-
 .home {
   position: relative;
-  min-height: 88vh;
+  min-height: calc(100vh - 120px);
   display: flex;
-  align-items: center;
-  padding: 9rem clamp(4%, 8vw, 10%) 5rem;
+  align-items: flex-start;
+  padding: 6rem clamp(4%, 8vw, 10%) 4rem;
 }
 
 .home::before {
@@ -237,6 +234,7 @@ body {
 }
 
 .home-content h1 {
+  max-width: 14ch;
   font-size: clamp(3.2rem, 4.8vw, 5.4rem);
   line-height: 1.05;
   margin-bottom: 2.2rem;
@@ -288,7 +286,6 @@ body {
 }
 
 /* Social refinement */
-
 .hero-social {
   display: flex;
   gap: 1.2rem;
@@ -304,7 +301,6 @@ body {
 /* =========================
    ABOUT SECTION
 ========================= */
-
 .about {
   display: flex;
   justify-content: center;
@@ -403,7 +399,6 @@ body {
 /* =========================
    services section
 ========================= */
-
 .heading {
   font-size: 6rem;
   text-align: center;
@@ -415,7 +410,7 @@ body {
   background-color: var(--bg-color);
   color: var(--text-color);
   text-align: center;
-  padding: 6rem clamp(4%, 8vw, 10%);
+  padding: 6rem clamp(4%, 8vw, 10%) 10rem;
 }
 
 .services h2 {
@@ -479,38 +474,40 @@ body {
 /* =========================
    PROJECTS SECTION
 ========================= */
-
 .projects {
+  scroll-margin-top: 120px;
   background-color: var(--second-bg-color);
-  padding: 4rem clamp(4%, 8vw, 10%) 7rem;
+  padding: 0 clamp(4%, 8vw, 10%) 6rem;
   text-align: center;
 }
 
 .projects .heading {
-  margin-bottom: 2.5rem;
+  font-size: 4rem;
+  margin-bottom: 5rem;
 }
 
-/* GRID CONTAINER */
+/* GRID */
 .projects-box {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 2.5rem;
+  gap: 2rem;
   max-width: 1100px;
-  margin: 1rem auto 0;
+  margin: 2rem auto 0;
 }
 
-/* PROJECT CARD */
+/* CARD */
 .project-card {
   background-color: var(--bg-color);
   border: 2px solid var(--main-color);
   border-radius: 2rem;
-  padding: 1.8rem 1.5rem;
+  padding: 1rem;
   text-align: center;
   transition: 0.3s ease;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.2rem;
+  position: relative;
 }
 
 .project-card:hover {
@@ -518,43 +515,98 @@ body {
     0 0 25px var(--main-color),
     0 0 50px var(--main-color);
   transform: translateY(-6px);
+  transform: translateY(-6px);
+  transition: 0.3s ease;
 }
 
-.project-card img {
+/* CLICKABLE IMAGE */
+.project-image-link {
+  display: block;
   width: 100%;
-  max-width: 200px;
-  height: 150px;
-  border-radius: 1.2rem;
-  object-fit: cover;
+  border-radius: 1rem;
+  overflow: hidden;
+  cursor: pointer;
 }
 
+.project-image-link img {
+  width: 100%;
+  height: 150px;
+  object-fit: cover;
+  transition:
+    transform 0.3s ease,
+    filter 0.3s ease;
+}
+
+.project-image-link:hover img {
+  transform: scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* TEXT */
 .project-card h3 {
-  font-size: 2.1rem;
+  font-size: 1.8rem;
 }
 
 .project-card p {
-  font-size: 1.3rem;
-  line-height: 1.5;
-  max-height: 4.5em;
+  font-size: 1.2rem;
+  line-height: 1.4;
+  max-height: 4.2em;
   overflow: hidden;
 }
 
-.project-card .btn {
-  margin-top: 1rem;
+/* STACK */
+.project-stack {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 0.5rem;
+  gap: 0.5rem;
+}
+
+.project-stack span {
+  background-color: var(--second-bg-color);
+  border: 1px solid var(--main-color);
+  padding: 0.3rem 0.7rem;
+  border-radius: 2rem;
+  font-size: 1rem;
+}
+
+/* FEATURED */
+.project-card.featured {
+  box-shadow: 0 0 20px rgba(234, 88, 12, 0.3);
+}
+
+.project-card.featured h3 {
+  font-size: 2.3rem;
+}
+
+.featured-label {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: var(--main-color);
+  color: #fff;
+  font-size: 1rem;
+  padding: 4px 10px;
+  border-radius: 20px;
+  letter-spacing: 1px;
 }
 
 /* =========================
    CONTACT SECTION
 ========================= */
-
 .contact {
-  background-color: var(--bg-color);
-  padding: 6rem clamp(4%, 8vw, 10%);
-  text-align: center;
+  padding: 2rem clamp(4%, 8vw, 10%) 2rem;
+  flex: 1;
+}
+
+.contact h2 {
+  font-size: 3.6rem;
 }
 
 .contact .heading {
-  margin-bottom: 4rem;
+  font-size: 3.8rem;
+  margin-bottom: 2rem;
 }
 
 .contact form {
@@ -587,7 +639,7 @@ body {
 .contact input,
 .contact textarea {
   width: 100%;
-  padding: 1.8rem;
+  padding: 1.2rem 1.6rem;
   font-size: 1.6rem;
   color: var(--text-color);
   background-color: transparent;
@@ -643,7 +695,6 @@ body {
 /* =========================
    SOCIAL ICONS
 ========================= */
-
 .social-icons {
   display: flex;
   gap: 2rem;
@@ -673,7 +724,6 @@ body {
 /* =========================
    IMAGE STYLING
 ========================= */
-
 .home-image img {
   width: clamp(240px, 26vw, 340px);
   border-radius: 50%;
@@ -691,6 +741,11 @@ body {
 /* =========================
    RESPONSIVE
 ========================= */
+@media (min-width: 1200px) {
+  .projects-box {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 
 @media (max-width: 992px) {
   .home-container {
