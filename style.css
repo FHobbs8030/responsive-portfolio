@@ -654,7 +654,7 @@ body {
 ========================= */
 .contact {
   flex: 1;
-  padding: 6rem clamp(4%, 8vw, 10%) 4rem;
+  padding: clamp(8rem, 12vh, 10rem) clamp(4%, 8vw, 10%) clamp(4rem, 8vh, 6rem);
   scroll-margin-top: 115px;
 }
 
@@ -664,7 +664,7 @@ body {
 
 .contact .heading {
   font-size: 3.8rem;
-  margin-bottom: 2rem;
+  margin-bottom: 4rem;
 }
 
 .contact form {
@@ -681,29 +681,109 @@ body {
   flex-direction: column;
 }
 
-/* INPUT STYLING */
-.contact input,
-.contact textarea {
+/* =========================
+   FLOATING INPUT FIELDS
+========================= */
+.input-field {
+  position: relative;
+  margin-bottom: 2.5rem;
+}
+
+.input-field input,
+.input-field textarea {
   width: 100%;
-  padding: 1.2rem 1.6rem;
+  padding: 1.4rem 1.6rem;
   font-size: 1.6rem;
   color: var(--text-color);
-  background-color: #111;
+  background: linear-gradient(#111, #0b0b0b);
   border-radius: 1.5rem;
   border: 2px solid var(--main-color);
   resize: none;
-  margin-bottom: 3rem;
+  transition: all 0.25s ease;
 }
 
-.contact textarea {
+/* textarea size */
+.input-field textarea {
   min-height: 180px;
 }
 
-/* BUTTON */
-.contact .btn {
-  align-self: stretch;
+/* hover effect */
+.input-field input:hover,
+.input-field textarea:hover {
+  border-color: #ff7a1a;
+  box-shadow: 0 0 8px rgba(234, 88, 12, 0.4);
 }
 
+/* focus glow */
+.input-field input:focus,
+.input-field textarea:focus {
+  outline: none;
+  border-color: #ff7a1a;
+  box-shadow: 0 0 10px rgba(234, 88, 12, 0.6);
+}
+
+/* =========================
+   FLOATING LABELS
+========================= */
+.input-field label {
+  position: absolute;
+  top: 50%;
+  left: 1.6rem;
+  transform: translateY(-50%);
+  color: #aaa;
+  font-size: 1.5rem;
+  pointer-events: none;
+  transition: 0.25s ease;
+  background: #080808;
+  padding: 0 0.6rem;
+}
+
+.input-field textarea + label {
+  top: 1rem;
+  transform: none;
+}
+
+/* float animation */
+.input-field input:focus + label,
+.input-field input:valid + label,
+.input-field textarea:focus + label,
+.input-field textarea:valid + label {
+  top: -0.8rem;
+  font-size: 1.2rem;
+  color: var(--main-color);
+}
+
+/* =========================
+   BUTTON
+========================= */
+.contact .btn {
+  width: fit-content;
+  align-self: flex-end;
+  background: var(--main-color);
+  color: white;
+  border: none;
+  border-radius: 3rem;
+  padding: 1.4rem 2.6rem;
+  font-size: 1.6rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(234, 88, 12, 0.35);
+  margin-top: 1rem;
+}
+
+.contact .btn:hover {
+  background: #ff7a1a;
+  transform: translateY(-2px);
+
+  box-shadow:
+    0 0 18px rgba(234, 88, 12, 0.65),
+    0 8px 22px rgba(0, 0, 0, 0.6);
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer {
   background-color: var(--second-bg-color);
   padding: 70px 0;
@@ -828,6 +908,10 @@ body {
 
   section {
     padding: 8rem 6% 4rem;
+  }
+
+  .contact form {
+    grid-template-columns: 1fr;
   }
 }
 

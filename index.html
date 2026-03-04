@@ -291,24 +291,54 @@
     <section class="contact" id="contact">
       <h2 class="heading">Contact <span>Me</span></h2>
 
-      <form>
-        <div class="input-group">
-          <div class="input-box">
-            <input type="text" placeholder="Full Name" />
-            <input type="email" placeholder="Email" />
-          </div>
+      <form action="#" method="POST">
 
-          <div class="input-box">
-            <input type="number" placeholder="Phone Number" />
-            <input type="text" placeholder="Subject" />
-          </div>
-        </div>
+  <div class="input-group">
 
-        <div class="input-group-2">
-          <textarea placeholder="Your Message"></textarea>
-          <input type="submit" value="Send Message" class="btn" />
-        </div>
-      </form>
+    <div class="input-box">
+
+      <div class="input-field">
+        <input type="text" id="name" name="name" placeholder=" " required />
+        <label for="name">Full Name</label>
+      </div>
+
+      <div class="input-field">
+        <input type="email" id="email" name="email" placeholder=" " required />
+        <label for="email">Email</label>
+      </div>
+
+    </div>
+
+
+    <div class="input-box">
+
+      <div class="input-field">
+        <input type="tel" id="phone" name="phone" placeholder=" " required />
+        <label for="phone">Phone Number</label>
+      </div>
+
+      <div class="input-field">
+        <input type="text" id="subject" name="subject" placeholder=" " required  />
+        <label for="subject">Subject</label>
+      </div>
+
+    </div>
+
+  </div>
+
+
+  <div class="input-group-2">
+
+    <div class="input-field">
+      <textarea id="message" name="message" placeholder=" " required></textarea>
+      <label for="message">Your Message</label>
+    </div>
+
+    <input type="submit" value="Send Message" class="btn" />
+
+  </div>
+
+</form>
     </section>
 
     <footer class="footer">
