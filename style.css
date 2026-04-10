@@ -77,6 +77,7 @@ body {
   border: 2px solid var(--main-color);
   border-radius: 50%;
   background: transparent;
+  margin-top: 8px;
   transition: 0.3s ease-in-out;
 }
 
@@ -267,11 +268,10 @@ body {
   margin: 0 auto;
 
   display: flex;
-  flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
 
-  gap: clamp(2rem, 5vw, 6rem);
+  gap: clamp(2rem, 4vw, 5rem);
 
   height: 100%;
 }
@@ -322,7 +322,7 @@ body {
   line-height: 1.7;
   color: rgba(255, 255, 255, 0.75);
   margin-bottom: clamp(1.2rem, 2.5vw, 2.4rem);
-  max-width: 500px;
+  max-width: 233px;
   letter-spacing: 0.2px;
 }
 
@@ -1020,7 +1020,8 @@ section {
    IMAGE STYLING
 ========================= */
 .home-image img {
-  width: clamp(240px, 26vw, 340px);
+  width: clamp(240px, 26vw, 320px);
+  height: auto;
   border-radius: 50%;
   box-shadow: 0 0 35px var(--main-color);
   transition: 0.4s ease-in-out;
@@ -1036,11 +1037,30 @@ section {
 /* =========================
    RESPONSIVE
 ========================= */
+@media (max-width: 1400px) {
+  .home-content h1 {
+    font-size: clamp(1.2rem, 2.5vw, 3.2rem);
+    line-height: 1.15;
+  }
+
+  .home-content {
+    max-width: 480px;
+  }
+
+  .home-image img {
+    width: clamp(240px, 26vw, 320px);
+  }
+
+  .home-container {
+    gap: 3rem;
+  }
+}
+
 @media (min-width: 1024px) {
-   .home {
+  .home {
     padding-top: 80px;
   }
-  
+
   .hero-social {
     margin-top: auto;
   }
@@ -1078,6 +1098,8 @@ section {
 
   .home-content h1,
   .home-content p {
+    width: 100% 480px;
+    max-width: fit-content;
     text-align: left;
     margin: 0;
   }
@@ -1086,59 +1108,123 @@ section {
   .hero-social {
     justify-content: flex-start;
   }
+
+  #menu-icon {
+    display: none;
+  }
 }
 
 /* =========================
    MOBILE
 ========================= */
 @media (max-width: 768px) {
-  #menu-icon {
-    display: block;
-  }
-
   .navbar {
-  position: absolute;
-  top: 100%;
-  right: 0;
-  width: 100%;
-  background: rgba(16, 16, 16, 0.9);
-
-  -webkit-backdrop-filter: blur(10px);
-  backdrop-filter: blur(10px);
-
-  flex-direction: column;
-  align-items: center;
-  padding: 2rem 0;
-  display: none;
-}
+    position: absolute;
+    top: 24%;
+    right: -32.5rem;
+    width: calc(100% - 3rem);
+    background: rgba(16, 16, 16, -0.08);
+    -webkit-backdrop-filter: blur(12px);
+    backdrop-filter: blur(12px);
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem 0;
+    display: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+  }
 
   .navbar.active {
     display: flex;
   }
 
   .header {
-    display: flex;
-    justify-content: space-between;
+    display: grid;
+    grid-template-columns: auto 1fr auto;
     align-items: center;
-  }
-
-  .header .btn {
-    flex-shrink: 0;
+    width: 100%;
+    padding: 0 1.6rem;
+    min-height: 72px;
   }
 
   .logo {
-    flex-shrink: 0;
+    grid-column: 1;
+    justify-self: start;
+  }
+
+  .header-btn {
+    grid-column: 2;
+    justify-self: center;
+    transform: translateX(-4px);
+    padding: 0.7rem 1.8rem;
+    font-size: 1.3rem;
+  }
+
+  #menu-icon {
+    grid-column: 3;
+    justify-self: end;
+    display: block;
+    font-size: 2.4rem;
+    color: var(--main-color);
+    cursor: pointer;
+  }
+
+  .home {
+    padding-top: calc(var(--header-height) + 0.5rem);
+    min-height: unset;
+  }
+
+  .home-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 2rem;
+    padding: 0 1.6rem;
+  }
+
+  .home-content {
+    flex: 1 1 240px;
+    max-width: 320px;
+    text-align: left;
   }
 
   .home-content h1 {
-  font-size: clamp(1.9rem, 3.5vw, 5.4rem);
-  line-height: 1.08;
-}
+    width: 100%;
+    max-width: 230px;
+    font-size: clamp(1.9rem, 2.8vw, 2.4rem);
+    line-height: 1.22;
+    margin-bottom: 0.8rem;
+  }
 
-.image-wrapper {
-  width: clamp(130px, 22vw, 320px);
-  height: clamp(130px, 22vw, 320px);
-}
+  .home-content p {
+    font-size: 1.25rem;
+    line-height: 1.55;
+    margin-bottom: 1.2rem;
+  }
+
+  .home-image {
+    flex: 0 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .home-image img {
+    width: clamp(160px, 22vw, 210px);
+    height: auto;
+    border-radius: 50%;
+  }
+
+  .btn-group {
+    justify-content: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  .hero-social {
+    justify-content: flex-start;
+    gap: 1rem;
+  }
 }
 
 @media (max-width: 640px) {
