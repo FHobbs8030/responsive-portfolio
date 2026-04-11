@@ -34,9 +34,9 @@
     </header>
 
     <main>
-      <section class="home" id="home">
+      <section class="home fade-in" id="home">
         <div class="home-container">
-          <article class="home-content">
+          <article class="home-content fade-in delay-1">
             <span class="hero-tag">Full-Stack Web Developer</span>
 
             <h1>Full-stack web developer building scalable applications</h1>
@@ -46,25 +46,32 @@
               systems using modern development practices.
             </p>
 
-            <div class="btn-group">
+            <div class="btn-group fade-in delay-2">
               <a href="#projects" class="gradient-btn">View Work</a>
               <a href="#contact" class="btn-outline">Let's Talk</a>
             </div>
 
-            <div class="social-icons hero-social">
-              <a href="https://github.com/FHobbs8030" aria-label="GitHub profile">
-                <i class="bx bxl-github" aria-hidden="true"></i>
+            <div class="social-icons hero-social fade-in delay-3">
+              <a
+                href="https://github.com/FHobbs8030"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="GitHub profile"
+              >
+                <i class="bx bxl-github"></i>
               </a>
               <a
                 href="https://www.linkedin.com/in/fred-hobbs-70aa9417a/"
+                target="_blank"
+                rel="noopener noreferrer"
                 aria-label="LinkedIn profile"
               >
-                <i class="bx bxl-linkedin-square" aria-hidden="true"></i>
+                <i class="bx bxl-linkedin-square"></i>
               </a>
             </div>
           </article>
 
-          <div class="home-image">
+          <div class="home-image fade-in delay-2">
             <div class="image-wrapper">
               <img
                 src="assets/images/home-Fred.png"
@@ -75,12 +82,12 @@
         </div>
       </section>
 
-      <section class="about" id="about">
-        <div class="about-img">
+      <section class="about fade-in" id="about">
+        <div class="about-img fade-in delay-1">
           <img src="assets/images/about-Fred.png" alt="Portrait of Fred Hobbs" />
         </div>
 
-        <article class="about-content">
+        <article class="about-content fade-in delay-2">
           <h2>About <span>Me</span></h2>
 
           <p>
@@ -100,169 +107,139 @@
         </article>
       </section>
 
-      <section class="services" id="services">
-        <h2 class="heading">What I Build</h2>
+      <section class="services fade-in" id="services">
+        <h2 class="heading fade-in delay-1">What I Build</h2>
 
         <div class="services-container">
-          <article class="service-box">
-            <div class="service-info">
-              <i class="bx bx-layer"></i>
-              <h4>Full-Stack Application Development</h4>
-              <p>
-                Designing and building complete web applications from frontend
-                interface to backend infrastructure using modern JavaScript,
-                React, Node.js, Express, and MongoDB.
-              </p>
-            </div>
+          <article class="service-box fade-in delay-1">
+            <i class="bx bx-layer"></i>
+            <h4>Full-Stack Application Development</h4>
+            <p>
+              Designing and building complete web applications from frontend
+              interface to backend infrastructure using modern JavaScript,
+              React, Node.js, Express, and MongoDB.
+            </p>
           </article>
 
-          <article class="service-box">
-            <div class="service-info">
-              <i class="bx bx-code"></i>
-              <h4>Frontend Architecture</h4>
-              <p>
-                Developing responsive, component-based interfaces with clean
-                structure, reusable logic, and performance-focused design.
-              </p>
-            </div>
+          <article class="service-box fade-in delay-2">
+            <i class="bx bx-code"></i>
+            <h4>Frontend Architecture</h4>
+            <p>
+              Developing responsive, component-based interfaces with clean
+              structure, reusable logic, and performance-focused design.
+            </p>
           </article>
 
-          <article class="service-box">
-            <div class="service-info">
-              <i class="bx bx-server"></i>
-              <h4>Backend Systems & APIs</h4>
-              <p>
-                Structuring RESTful APIs, authentication flows, database schemas,
-                and server-side logic to support scalable, maintainable systems.
-              </p>
-            </div>
+          <article class="service-box fade-in delay-3">
+            <i class="bx bx-server"></i>
+            <h4>Backend Systems & APIs</h4>
+            <p>
+              Structuring RESTful APIs, authentication flows, database schemas,
+              and server-side logic to support scalable, maintainable systems.
+            </p>
           </article>
         </div>
       </section>
 
-      <section class="projects" id="projects">
-        <h2 class="heading">Projects</h2>
+      <section class="projects fade-in" id="projects">
+        <h2 class="heading fade-in delay-1">Projects</h2>
 
-        <div class="featured-project">
-          <article class="project-card featured">
-            <div class="project-image">
-              <img src="assets/images/project1.png" alt="WTWR Project" />
-              <span class="badge">Featured</span>
-            </div>
-
-            <div class="project-content">
-              <h3>WTWR – What To Wear</h3>
-              <p>
-                Full-stack weather-based clothing app with authentication, API integration,
-                and deployed backend.
-              </p>
-
-              <div class="tech-stack">
-                <span>React</span>
-                <span>Node.js</span>
-                <span>Express</span>
-                <span>MongoDB</span>
+        <div class="projects-layout">
+          <div class="featured-project fade-in delay-1">
+            <article class="project-card featured">
+              <div class="project-image">
+                <img src="assets/images/project1.png" alt="WTWR Project" />
+                <span class="badge">Featured</span>
               </div>
 
-              <div class="project-links">
-                <a href="https://fhobbs.twilightparadox.com" target="_blank" rel="noopener noreferrer">Live</a>
-                <a href="https://github.com/FHobbs8030" target="_blank" rel="noopener noreferrer">Code</a>
+              <div class="project-content">
+                <h3>WTWR – What To Wear</h3>
+                <p>
+                  Full-stack weather-based clothing app with authentication, API integration,
+                  and deployed backend.
+                </p>
+
+                <div class="tech-stack">
+                  <span>React</span>
+                  <span>Node.js</span>
+                  <span>Express</span>
+                  <span>MongoDB</span>
+                </div>
+
+                <div class="project-links">
+                  <a href="https://fhobbs.twilightparadox.com" target="_blank" rel="noopener noreferrer">Live</a>
+                  <a href="https://github.com/FHobbs8030" target="_blank" rel="noopener noreferrer">Code</a>
+                </div>
               </div>
-            </div>
-          </article>
-        </div>
+            </article>
+          </div>
 
-        <div class="projects-container">
+          <div class="projects-container">
+            <article class="project-card fade-in delay-2">
+              <img src="assets/images/project2.png" alt="Coffee Project" />
+              <h3>Coffee Specialty</h3>
+              <p>Responsive landing page built with semantic HTML and CSS.</p>
+            </article>
 
-          <article class="project-card">
-            <img src="assets/images/project2.png" alt="Coffee Project" />
-            <h3>Coffee Specialty</h3>
-            <p>Responsive landing page built with semantic HTML and CSS.</p>
+            <article class="project-card fade-in delay-3">
+              <img src="assets/images/project3.png" alt="Around the US" />
+              <h3>Around the US</h3>
+              <p>Interactive card-based UI with modals and API integration.</p>
+            </article>
 
-            <div class="project-links">
-              <a href="https://FHobbs8030.github.io/se_project_coffeeshop/" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="https://github.com/FHobbs8030/se_project_coffeeshop" target="_blank" rel="noopener noreferrer">Code</a>
-            </div>
-          </article>
+            <article class="project-card fade-in delay-4">
+              <img src="assets/images/project4.png" alt="BreatheWell" />
+              <h3>BreatheWell</h3>
+              <p>Guided breathing and mindfulness interface built during a team project.</p>
+            </article>
 
-          <article class="project-card">
-            <img src="assets/images/project3.png" alt="Around the US" />
-            <h3>Around the US</h3>
-            <p>Interactive card-based UI with modals and API integration.</p>
-
-            <div class="project-links">
-              <a href="https://FHobbs8030.github.io/se_project_aroundtheus/" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="https://github.com/FHobbs8030/se_project_aroundtheus" target="_blank" rel="noopener noreferrer">Code</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="assets/images/project4.png" alt="BreatheWell" />
-            <h3>BreatheWell</h3>
-            <p>Guided breathing and mindfulness interface built during a team project.</p>
-
-            <div class="project-links">
-              <a href="#" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="#" target="_blank" rel="noopener noreferrer">Code</a>
-            </div>
-          </article>
-
-          <article class="project-card">
-            <img src="assets/images/project5.png" alt="Portfolio" />
-            <h3>Responsive Portfolio</h3>
-            <p>Modern responsive portfolio with animations and mobile-first design.</p>
-
-            <div class="project-links">
-              <a href="https://fhobbs8030.github.io/responsive-portfolio/" target="_blank" rel="noopener noreferrer">Live</a>
-              <a href="https://github.com/FHobbs8030" target="_blank" rel="noopener noreferrer">Code</a>
-            </div>
-          </article>
-
+            <article class="project-card fade-in delay-4">
+              <img src="assets/images/project5.png" alt="Portfolio" />
+              <h3>Responsive Portfolio</h3>
+              <p>Modern responsive portfolio with animations and mobile-first design.</p>
+            </article>
+          </div>
         </div>
       </section>
 
-      <section class="contact" id="contact">
-        <h2 class="heading">Contact <span>Me</span></h2>
+      <section class="contact fade-in" id="contact">
+        <h2 class="heading fade-in delay-1">Contact <span>Me</span></h2>
 
-        <form action="#" method="POST">
-
+        <form>
           <div class="input-group">
-
             <div class="input-box">
               <div class="input-field">
-                <input type="text" id="name" name="name" placeholder=" " required />
+                <input type="text" id="name" name="name" placeholder=" " aria-label="Full Name" required />
                 <label for="name">Full Name</label>
               </div>
 
               <div class="input-field">
-                <input type="email" id="email" name="email" placeholder=" " required />
+                <input type="email" id="email" name="email" placeholder=" " aria-label="Email" required />
                 <label for="email">Email</label>
               </div>
             </div>
 
             <div class="input-box">
               <div class="input-field">
-                <input type="tel" id="phone" name="phone" placeholder=" " required />
+                <input type="tel" id="phone" name="phone" placeholder=" " aria-label="Phone Number" required />
                 <label for="phone">Phone Number</label>
               </div>
 
               <div class="input-field">
-                <input type="text" id="subject" name="subject" placeholder=" " required />
+                <input type="text" id="subject" name="subject" placeholder=" " aria-label="Subject" required />
                 <label for="subject">Subject</label>
               </div>
             </div>
-
           </div>
 
           <div class="input-group-2">
             <div class="input-field">
-              <textarea id="message" name="message" placeholder=" " required></textarea>
+              <textarea id="message" name="message" placeholder=" " aria-label="Your Message" required></textarea>
               <label for="message">Your Message</label>
             </div>
 
             <input type="submit" value="Send Message" class="btn" />
           </div>
-
         </form>
       </section>
     </main>
@@ -272,12 +249,5 @@
     </footer>
 
     <script src="script.js"></script>
-    <script>
-      window.addEventListener("load", () => {
-        if (!window.location.hash) {
-          window.location.hash = "home";
-        }
-      });
-    </script>
   </body>
 </html>
