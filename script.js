@@ -1,13 +1,7 @@
-const menuIcon = document.querySelector("#menu-icon");
 const navbar = document.querySelector(".navbar");
 const faders = document.querySelectorAll(".fade-in");
 const sections = document.querySelectorAll("section");
 const navLinks = document.querySelectorAll("header nav a");
-
-menuIcon.onclick = () => {
-  menuIcon.classList.toggle("bx-x");
-  navbar.classList.toggle("active");
-};
 
 navLinks.forEach((link) => {
   link.addEventListener("click", function () {
