@@ -13,7 +13,7 @@
   --text-color: #ffffff;
   --text-soft: rgba(255, 255, 255, 0.85);
   --main-color: #ea580c;
-  --header-height: 90px;
+  --header-height: 120px;
 
   --fs-xl: clamp(3.2rem, 4vw, 5.2rem);
   --fs-lg: clamp(2.4rem, 2.5vw, 3.6rem);
@@ -151,13 +151,12 @@ body {
 
 section {
   scroll-margin-top: var(--header-height);
-  padding: calc(var(--header-height) + 1rem) clamp(1.5rem, 4vw, 6rem) 4rem;
   max-width: 1200px;
   margin: 0 auto;
 }
 
 .home-container,
-.about,
+.about-container,
 .projects-layout,
 .services-container,
 .contact form {
@@ -326,12 +325,49 @@ img {
 .social-icons a:hover i {
   color: var(--main-color);
 }
-
+/* ABOUT SECTION */
 .about {
+  position: relative;
+  z-index: 1;
+  background: #080808;
+  padding: 3rem 0;
+}
+
+.about::before,
+.about::after {
+  display: none;
+}
+
+.about-container {
   display: flex;
   flex-direction: column;
   align-items: center;
   text-align: center;
+  gap: 2rem;
+}
+
+.about-image {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+
+.about-image .image-wrapper {
+  width: 100%;
+  max-width: 240px;
+}
+
+.about-content {
+  max-width: 480px;
+}
+
+.about-content h2 {
+  margin-bottom: 1rem;
+}
+
+.about-content p {
+  color: var(--text-soft);
+  line-height: 1.6;
 }
 
 .projects {
@@ -746,11 +782,19 @@ img {
   }
 
   /* ABOUT */
-  .about {
+  .about-container {
     flex-direction: row;
     align-items: center;
+    justify-content: space-between;
     text-align: left;
-    gap: 3rem;
+  }
+
+  .about-content {
+    max-width: 480px;
+  }
+
+  .about-image .image-wrapper {
+    max-width: 240px;
   }
 
   /* SERVICES */
@@ -774,7 +818,11 @@ img {
 @media (max-width: 768px) {
   /* FORCE CLEAN BACKGROUND */
   .home {
-    background: #080808 !important;
+    min-height: unset !important;
+    height: auto;
+    padding-bottom: 2rem;
+
+    align-items: flex-start; /* 🔥 THIS is the key fix */
   }
 
   /* REMOVE ALL LAYERED EFFECTS */
@@ -800,9 +848,19 @@ img {
     backdrop-filter: none !important;
   }
 
-  /* 🟢 ADD THIS (you were missing this part) */
+.home {
+    min-height: unset !important;
+    height: auto;
+    align-items: flex-start;
+
+    margin-top: var(--header-height); /* ONLY offset */
+
+    padding: 2rem 0; /* clean, simple spacing */
+  }
+
   .home-container {
-    flex-direction: column;
+    /* flex-direction: column; */
+    margin-top: 1rem;
     text-align: center;
     gap: 2rem;
   }
@@ -820,10 +878,14 @@ img {
 
 @media (min-width: 992px) {
   section {
-    padding: calc(var(--header-height) + 2.5rem) clamp(4%, 6vw, 8%) 3rem;
+    padding: calc(var(--header-height) + 2.5rem) 2rem 3rem;
   }
 
   /* HERO FINAL ALIGNMENT */
+  .home {
+    min-height: calc(100vh - var(--header-height));
+  }
+
   .home-container {
     flex-direction: row;
     align-items: center;

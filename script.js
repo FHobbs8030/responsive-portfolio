@@ -6,7 +6,6 @@ const navLinks = document.querySelectorAll("header nav a");
 navLinks.forEach((link) => {
   link.addEventListener("click", function () {
     navbar.classList.remove("active");
-    menuIcon.classList.remove("bx-x");
 
     navLinks.forEach((l) => l.classList.remove("active"));
     this.classList.add("active");
