@@ -250,8 +250,11 @@ section {
 .home {
   min-height: 100vh;
   height: auto;
+
   display: flex;
-  align-items: center;
+  align-items: center;   
+  justify-content: center;
+
   padding-top: calc(var(--header-height) + 1rem);
 }
 
@@ -1500,15 +1503,15 @@ textarea {
    768px Home section
 ========================= */
 @media (max-width: 768px) {
-  .home {
+    .home {
     min-height: 100vh;
     height: auto;
 
     display: flex;
-    align-items: flex-start;   
+    align-items: flex-start;  
     justify-content: center;
 
-    padding: 2.5rem 0 4rem;   
+    padding: 2.5rem 0 5rem;   
   }
 
   .home-container {
@@ -1532,7 +1535,7 @@ textarea {
     flex-direction: column;
     align-items: center;
 
-    max-width: 600px;
+    max-width: 520px;
 
     gap: 1.2rem;
     margin-top: 1rem;
@@ -1579,7 +1582,7 @@ textarea {
 
   .social-icons {
     margin-top: 0.8rem;
-    margin-bottom: 0.6rem;
+    margin-bottom: 1rem;
   }
 
   /* =========================
