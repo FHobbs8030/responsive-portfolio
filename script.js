@@ -78,9 +78,47 @@ const navObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.6 }
+  { threshold: 0.6 },
 );
 
 sections.forEach((section) => {
   navObserver.observe(section);
+});
+
+const form = document.getElementById("contact-form");
+const status = document.getElementById("form-status");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const data = new FormData(form);
+  const submitBtn = form.querySelector("button");
+
+  submitBtn.disabled = true;
+  submitBtn.textContent = "Sending...";
+
+  try {
+    const response = await fetch(form.action, {
+      method: "POST",
+      body: data,
+      headers: {
+        Accept: "application/json",
+      },
+    });
+
+    if (response.ok) {
+      status.textContent = "Message sent successfully!";
+      status.className = "form-status success";
+      form.reset();
+    } else {
+      status.textContent = "Oops! Something went wrong.";
+      status.className = "form-status error";
+    }
+  } catch (error) {
+    status.textContent = "Network error. Please try again.";
+    status.className = "form-status error";
+  }
+
+  submitBtn.disabled = false;
+  submitBtn.textContent = "Send Message";
 });

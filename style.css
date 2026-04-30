@@ -90,6 +90,15 @@ section::before {
 }
 
 /* =========================
+   GLOBAL / UTILITIES
+========================= */
+
+.honeypot {
+  position: absolute;
+  left: -9999px;
+}
+
+/* =========================
    HEADER
 ========================= */
 
@@ -1136,6 +1145,21 @@ section {
 .contact form > * {
   position: relative;
   z-index: 1;
+}
+
+.form-status {
+  margin-top: 1rem;
+  font-size: 1.4rem;
+  color: #ff5a00;
+  text-align: center;
+}
+
+.form-status.success {
+  color: #22c55e;
+}
+
+.form-status.error {
+  color: #ef4444;
 }
 
 /* ================= ROW LAYOUT ================= */
