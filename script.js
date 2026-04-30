@@ -110,6 +110,11 @@ form.addEventListener("submit", async (e) => {
       status.textContent = "Message sent successfully!";
       status.className = "form-status success";
       form.reset();
+
+      setTimeout(() => {
+        status.textContent = "";
+        status.className = "form-status";
+      }, 4000);
     } else {
       status.textContent = "Oops! Something went wrong.";
       status.className = "form-status error";
