@@ -89,13 +89,18 @@ section::before {
   padding: 0 1.5rem;
 }
 
-/* =========================
-   GLOBAL / UTILITIES
-========================= */
+/* GLOBAL / UTILITIES */
 
 .honeypot {
   position: absolute;
-  left: -9999px;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
 }
 
 /* =========================
@@ -648,9 +653,8 @@ section {
 /* =========================
    TEXT
 ========================= */
-
 .about-content p {
-  font-size: 0.95rem;
+  font-size: 1.4rem;
   line-height: 1.6;
 
   color: var(--text-soft);

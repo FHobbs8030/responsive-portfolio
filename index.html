@@ -325,13 +325,18 @@
 
       <section class="contact" id="contact">
         <div class="contact-container">
-          <form id="contact-form" action="https://formspree.io/f/xaqvyyav" method="POST"></form>
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/xaqvyyav"
+            method="POST"
+          >
             <!-- Hidden fields -->
             <input
               type="hidden"
               name="_subject"
               value="New Portfolio Contact Message"
             />
+
             <input
               type="text"
               name="_gotcha"
@@ -360,6 +365,8 @@
                   name="email"
                   type="email"
                   placeholder="Enter your email"
+                  autocomplete="email"
+                  autocapitalize="off"
                   required
                 />
               </div>
@@ -400,7 +407,6 @@
             <button class="btn-submit" type="submit">Send Message</button>
 
             <p id="form-status" class="form-status"></p>
-            
           </form>
         </div>
       </section>
