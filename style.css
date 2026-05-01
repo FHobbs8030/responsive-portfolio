@@ -494,7 +494,7 @@ section {
 #about {
   min-height: unset;
 
-  padding-top: calc(var(--header-height) + 2rem);
+  padding-top: calc(var(--header-height) + 1rem);
   padding-right: 2rem;
   padding-left: 2rem;
   padding-bottom: 1.5rem;
@@ -537,7 +537,7 @@ section {
 
 .about-image .image-wrapper {
   width: 100%;
-  max-width: clamp(140px, 38vw, 240px);
+  max-width: clamp(120px, 32vw, 220px);
 
   border-radius: 50%;
   border: 1px solid rgba(234, 88, 12, 0.28);
@@ -1958,6 +1958,12 @@ textarea {
     margin-right: auto;
   }
 
+   .about-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
   .about-stack {
     position: static;
     max-width: 100%;
@@ -1971,20 +1977,49 @@ textarea {
     padding: 4rem 1.5rem;
   }
 
+  .about-container {
+  gap: 1.2rem;
+}
+
   .about-content {
-    padding: 1.6rem;
+    padding: 1.4rem;
   }
 
   .about-content p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
   }
 
   .about-image .image-wrapper {
-    max-width: 200px;
+    max-width: 180px;
+  }
+
+   .about-image {
+    transform: scale(0.95);
   }
 
   .about-image::before {
     display: none;
+  }
+
+ .about-title-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .about-stack {
+    gap: 0.5rem;
+  }
+
+  .about-stack span {
+    font-size: 1.1rem;
+    padding: 0.35rem 1rem;
+  }
+}
+
+  @media (max-width: 320px) {
+  .about-image .image-wrapper {
+    max-width: 160px;
   }
 }
 
