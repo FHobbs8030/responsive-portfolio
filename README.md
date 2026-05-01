@@ -16,13 +16,13 @@ Designed with a **dark UI system**, **glow-based interactions**, and **clean res
 ## 📸 Project Preview
 
 ### 🏠 Home Section
-![Home Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/home-Fred.png)
+<!-- ![Home Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/home-Fred.png) -->
 
 ### 👤 About Section
-![About Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/about-Fred.png)
+<!-- ![About Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/about-Fred.png) -->
 
 ### 💼 Projects Section
-![Projects Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/project5.png)
+<!-- ![Projects Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/project5.png) -->
 
 ### 🛠 Services Section
 Showcases development capabilities including frontend, backend, and full-stack application design.
