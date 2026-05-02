@@ -349,88 +349,98 @@
 
       <section class="contact" id="contact">
         <div class="contact-container">
-         <form
-  id="contact-form"
-  action="https://formspree.io/f/xaqvyyav"
-  method="POST"
->
-  <input
-    type="hidden"
-    name="_subject"
-    value="🔥 New Portfolio Lead - Requires Attention"
-  />
+          <form
+            id="contact-form"
+            action="https://formspree.io/f/xaqvyyav"
+            method="POST"
+          >
+            <!-- Custom Subject -->
+            <input
+              type="hidden"
+              name="_subject"
+              value="🔥 New Portfolio Lead - Requires Attention"
+            />
 
-  <input
-    type="text"
-    name="_gotcha"
-    class="honeypot"
-    tabindex="-1"
-    autocomplete="off"
-    aria-hidden="true"
-  />
+            <!-- Reply-To (auto-filled with user email) -->
+            <input type="hidden" name="_replyto" id="replyto" />
 
-  <div class="form-row">
-    <div class="input-group">
-      <label for="name">Full Name</label>
-      <input
-        id="name"
-        name="Full Name"
-        type="text"
-        placeholder="Enter your name"
-        required
-      />
-    </div>
+            <!-- Timestamp -->
+            <input type="hidden" name="Submitted At" id="submittedAt" />
 
-    <div class="input-group">
-      <label for="email">Email</label>
-      <input
-        id="email"
-        name="Email"
-        type="email"
-        placeholder="Enter your email"
-        autocomplete="email"
-        autocapitalize="off"
-        required
-      />
-    </div>
-  </div>
+            <!-- Honeypot Spam Protection -->
+            <input
+              type="text"
+              name="_gotcha"
+              class="honeypot"
+              tabindex="-1"
+              autocomplete="off"
+              aria-hidden="true"
+            />
 
-  <div class="form-row">
-    <div class="input-group">
-      <label for="phone">Phone Number</label>
-      <input
-        id="phone"
-        name="Phone Number"
-        type="tel"
-        placeholder="Optional"
-      />
-    </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="name">Full Name</label>
+                <input
+                  id="name"
+                  name="Full Name"
+                  type="text"
+                  placeholder="Enter your name"
+                  required
+                />
+              </div>
 
-    <div class="input-group">
-      <label for="subject">Subject</label>
-      <input
-        id="subject"
-        name="Subject"
-        type="text"
-        placeholder="Enter subject"
-      />
-    </div>
-  </div>
+              <div class="input-group">
+                <label for="email">Email</label>
+                <input
+                  id="email"
+                  name="Email"
+                  type="email"
+                  placeholder="Enter your email"
+                  autocomplete="email"
+                  autocapitalize="off"
+                  required
+                />
+              </div>
+            </div>
 
-  <div class="input-group">
-    <label for="message">Your Message</label>
-    <textarea
-      id="message"
-      name="Message"
-      placeholder="Write your message here..."
-      required
-    ></textarea>
-  </div>
+            <div class="form-row">
+              <div class="input-group">
+                <label for="phone">Phone Number</label>
+                <input
+                  id="phone"
+                  name="Phone Number"
+                  type="tel"
+                  inputmode="tel"
+                  pattern="[0-9\-+\s()]{7,}"
+                  placeholder="Optional"
+                />
+              </div>
 
-  <button class="btn-submit" type="submit">Send Message</button>
+              <div class="input-group">
+                <label for="subject">Subject</label>
+                <input
+                  id="subject"
+                  name="Subject"
+                  type="text"
+                  placeholder="Enter subject"
+                />
+              </div>
+            </div>
 
-  <p id="form-status" class="form-status"></p>
-</form>
+            <div class="input-group">
+              <label for="message">Your Message</label>
+              <textarea
+                id="message"
+                name="Message"
+                placeholder="Write your message here..."
+                required
+              ></textarea>
+            </div>
+
+            <button class="btn-submit" type="submit">Send Message</button>
+
+            <p id="form-status" class="form-status"></p>
+          </form>
         </div>
       </section>
     </main>

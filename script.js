@@ -93,6 +93,19 @@ document.addEventListener("DOMContentLoaded", () => {
   form.addEventListener("submit", async (e) => {
     e.preventDefault();
 
+    // 🔥 Set reply-to email BEFORE sending
+    const emailInput = document.getElementById("email");
+    const replyTo = document.getElementById("replyto");
+    if (emailInput && replyTo) {
+      replyTo.value = emailInput.value;
+    }
+
+    // 🔥 Set timestamp BEFORE sending
+    const ts = document.getElementById("submittedAt");
+    if (ts) {
+      ts.value = new Date().toLocaleString();
+    }
+
     const data = new FormData(form);
     const submitBtn = form.querySelector("button");
 
