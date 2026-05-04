@@ -178,7 +178,7 @@
                 >
                   <img src="assets/images/project1.png" alt="WTWR Project" />
                 </a>
-                <span class="badge">Featured</span>
+                <span class="featured-badge">Featured</span>
               </div>
 
               <div class="project-content">
@@ -251,7 +251,11 @@
               </article>
 
               <article class="project-card">
-                <a href="#" target="_blank" rel="noopener noreferrer">
+                <a
+                  href="https://fhobbs8030.github.io/se_project_aroundtheus/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
                   <img src="assets/images/project3.png" alt="Around the US" />
                 </a>
 
@@ -263,23 +267,25 @@
 
                   <div class="project-links">
                     <a
-                      href="#"
+                      href="https://fhobbs8030.github.io/se_project_aroundtheus/"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="project-btn live"
-                      >Live</a
                     >
+                      Live
+                    </a>
+
                     <a
-                      href="#"
+                      href="https://github.com/FHobbs8030/se_project_aroundtheus"
                       target="_blank"
                       rel="noopener noreferrer"
                       class="project-btn code"
-                      >GitHub</a
                     >
+                      GitHub
+                    </a>
                   </div>
                 </div>
               </article>
-
               <article class="project-card">
                 <a href="#" target="_blank" rel="noopener noreferrer">
                   <img src="assets/images/project4.png" alt="BreatheWell" />
@@ -356,24 +362,22 @@
             id="contact-form"
             action="https://formspree.io/f/xaqvyyav"
             method="POST"
+            aria-label="Contact form"
           >
-            <!-- Custom Subject -->
             <input
               type="hidden"
               name="_subject"
               value="🔥 New Portfolio Lead - Requires Attention"
             />
 
-            <!-- Reply-To (auto-filled with user email) -->
-            <input type="hidden" name="_replyto" id="replyto" />
-
-            <!-- Timestamp -->
+            <input type="hidden" name="email" id="replyto" />
             <input type="hidden" name="Submitted At" id="submittedAt" />
+            <input type="hidden" name="_redirect" value="#contact" />
 
-            <!-- Honeypot Spam Protection -->
+            <!-- Honeypot -->
             <input
               type="text"
-              name="_gotcha"
+              name="company"
               class="honeypot"
               tabindex="-1"
               autocomplete="off"
@@ -383,13 +387,7 @@
             <div class="form-row">
               <div class="input-group">
                 <label for="name">Full Name</label>
-                <input
-                  id="name"
-                  name="Full Name"
-                  type="text"
-                  placeholder="Enter your name"
-                  required
-                />
+                <input id="name" name="Full Name" type="text" required />
               </div>
 
               <div class="input-group">
@@ -398,9 +396,7 @@
                   id="email"
                   name="Email"
                   type="email"
-                  placeholder="Enter your email"
                   autocomplete="email"
-                  autocapitalize="off"
                   required
                 />
               </div>
@@ -421,12 +417,7 @@
 
               <div class="input-group">
                 <label for="subject">Subject</label>
-                <input
-                  id="subject"
-                  name="Subject"
-                  type="text"
-                  placeholder="Enter subject"
-                />
+                <input id="subject" name="Subject" type="text" required />
               </div>
             </div>
 
@@ -435,13 +426,12 @@
               <textarea
                 id="message"
                 name="Message"
-                placeholder="Write your message here..."
+                rows="5"
                 required
               ></textarea>
             </div>
 
             <button class="btn-submit" type="submit">Send Message</button>
-
             <p id="form-status" class="form-status"></p>
           </form>
         </div>

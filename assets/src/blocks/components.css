@@ -3,28 +3,30 @@
   content: "";
   position: absolute;
   top: 0;
-  left: -150%;
-  width: 150%;
+  left: -100%;
+  width: 100%;
   height: 100%;
+  opacity: 0.7;
 
   background: linear-gradient(
     120deg,
     transparent 30%,
-    rgba(255, 255, 255, 0.45),
+    rgba(255, 255, 255, 0.35),
     transparent 70%
   );
 
   transform: skewX(-25deg);
-  transition: left 0.6s ease;
+  transition: left 0.45s ease; /* faster + smoother */
 
-  z-index: 2;            
-  pointer-events: none;  
+  z-index: 2;
+  pointer-events: none;
 }
 
 .header-btn {
   position: relative;
-  overflow: hidden;
   z-index: 1;
+  isolation: isolate;
+  overflow: hidden;
   padding: 0.6rem 1.6rem;
   border-radius: 999px;
   background: linear-gradient(135deg, #ea580c, #ff6a1a);
@@ -43,16 +45,21 @@
     0 0 12px rgba(234, 88, 12, 0.5),
     0 0 25px rgba(234, 88, 12, 0.25);
 
-transition:
+  transition:
     transform 0.25s ease,
     box-shadow 0.25s ease,
     filter 0.25s ease;
 
   animation: headerGlow 3.5s ease-in-out infinite;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease,
+    filter 0.25s ease;
 }
 
 .header-btn:hover::before {
-  left: 150%;
+  left: 100%;
+  opacity: 1;
 }
 
 .header-btn:hover {
@@ -65,7 +72,7 @@ transition:
     0 10px 30px rgba(0, 0, 0, 0.7);
 
   filter: brightness(1.1);
-  animation: none;
+  animation: headerGlow 1.2s ease-in-out infinite;
 }
 
 /* ================= BUTTON SYSTEM ================= */
@@ -122,7 +129,8 @@ transition:
 /* ================= ANIMATION ================= */
 
 @keyframes headerGlow {
-  0%, 100% {
+  0%,
+  100% {
     box-shadow:
       0 0 12px rgba(234, 88, 12, 0.4),
       0 0 25px rgba(234, 88, 12, 0.2);
@@ -131,40 +139,5 @@ transition:
     box-shadow:
       0 0 16px rgba(234, 88, 12, 0.55),
       0 0 35px rgba(234, 88, 12, 0.25);
-  }
-}
-
-@media (max-width: 768px) {
-
-  .header__inner {
-    display: flex;                 /* 🔥 kill grid */
-    align-items: center;
-    justify-content: space-between;
-    position: relative;
-  }
-
-  /* MENU (LEFT) */
-  #menu-icon {
-    display: flex;
-    position: static;
-  }
-
-  /* LOGO (CENTER) */
-  .logo {
-    position: absolute;
-    left: 50%;
-    transform: translateX(-50%);
-  }
-
-  /* BUTTON (RIGHT) */
-  .header-btn {
-    position: static;             
-    transform: none;               
-    margin-left: auto;             
-  }
-
-  /* NAV OFF */
-  .navbar {
-    display: none;
   }
 }
