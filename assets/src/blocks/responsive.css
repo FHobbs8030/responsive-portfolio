@@ -1,0 +1,320 @@
+/* =========================
+   1400px
+========================= */
+@media (max-width: 1400px) {
+  .home-container {
+    max-width: 1200px;
+    gap: 2rem;
+  }
+
+  .home-content {
+    flex: 1 1 60%;
+    max-width: 600px;
+  }
+
+  .home-content h1 {
+    font-weight: 700;
+    letter-spacing: -0.4px;
+    line-height: 1.15;
+    margin-bottom: 0.3rem;
+  }
+
+  .home-content h1 span {
+    color: #ea580c;
+  }
+
+  .home-image {
+    flex: 1 1 40%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .image-wrapper {
+    max-width: 300px;
+  }
+}
+
+/* =========================
+   1200px
+========================= */
+@media (max-width: 1200px) {
+  .home {
+    align-items: flex-start;
+    padding-top: 1.5rem;
+  }
+
+  .home-container {
+    gap: 1.4rem;
+    padding: 1.5rem 2.5rem;
+    max-width: 1100px;
+  }
+
+  .home-content {
+    max-width: 440px;
+  }
+
+  .header__inner {
+    padding: 0 2.5rem;
+  }
+
+  .section-content {
+    gap: 1.5rem;
+  }
+}
+
+/* =========================
+   992px
+========================= */
+@media (max-width: 992px) {
+  /* HOME */
+  .home {
+    min-height: 85vh;
+  }
+
+  .home-container {
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.2rem;
+    text-align: left;
+  }
+
+  .home-content {
+    max-width: 420px;
+  }
+
+  .home-image {
+    max-width: 280px;
+  }
+
+  /* SERVICES */
+  .services-container,
+  .services-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* PROJECTS */
+  .projects-layout {
+    grid-template-columns: 1.4fr 1fr;
+  }
+
+  .section-content {
+    gap: 1rem;
+  }
+}
+
+/* =========================
+   768px
+========================= */
+@media (max-width: 768px) {
+  /* HEADER */
+  .header {
+    position: fixed;
+    width: 100%;
+    padding: 0.8rem 1.2rem;
+  }
+
+  .header__inner {
+    display: grid;
+    grid-template-columns: auto 1fr auto;
+  }
+
+  #menu-icon {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 26px;
+    height: 20px;
+  }
+
+  .logo {
+    justify-self: center;
+  }
+
+  .header .btn {
+    justify-self: end;
+  }
+
+  .navbar {
+    position: absolute;
+    top: 100%;
+    left: 1rem;
+    width: 260px;
+
+    transform: translateX(-120%);
+    opacity: 0;
+    visibility: hidden;
+
+    flex-direction: column;
+    padding: 1.2rem;
+  }
+
+  .navbar.active {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+
+  /* HOME */
+  .home-container {
+    /* flex-direction: column; */
+    align-items: center;
+    text-align: center;
+  }
+
+  .home-image {
+    justify-content: center;
+  }
+
+  .image-wrapper {
+    max-width: 230px;
+    margin-left: 0;
+  }
+
+  /* SERVICES */
+  .services-container,
+  .services-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* PROJECTS */
+  .projects-layout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .right-column {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* CONTACT */
+  .contact-container {
+    max-width: 100%;
+  }
+
+  .form-row {
+    flex-direction: column;
+  }
+
+  .contact form {
+    padding: 2rem;
+  }
+}
+
+/* =========================
+   480px
+========================= */
+@media (max-width: 480px) {
+  /* HOME */
+  .home-container {
+    padding: 1.5rem 1rem;
+  }
+
+  .home-image {
+    max-width: 220px;
+  }
+
+  /* SERVICES */
+  #services {
+    padding: 0.2rem 1.2rem 2.5rem;
+  }
+
+  #services::before {
+    display: none;
+  }
+
+  /* PROJECTS */
+  #projects {
+    padding: 4rem 1.5rem;
+  }
+
+  .projects-layout {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .project-card {
+    max-width: 320px;
+  }
+
+  /* CONTACT */
+  .contact {
+    padding: 0.2rem 1rem 4rem;
+  }
+
+  .contact form {
+    padding: 1.8rem;
+  }
+
+  /* NAV */
+  .navbar {
+    left: 0.5rem;
+  }
+}
+
+/* =========================
+   320px
+========================= */
+@media (max-width: 320px) {
+  .home-content h1 {
+    font-size: 1.7rem;
+  }
+
+  .btn-group {
+    flex-direction: column;
+  }
+
+  .home-image {
+    max-width: 180px;
+  }
+
+  .project-card {
+    max-width: 100%;
+  }
+
+  .btn-submit {
+    width: 100%;
+  }
+}
+
+/* =========================
+   SMALL WIDTH ADJUSTMENTS
+========================= */
+@media (max-width: 420px) {
+  .header__inner {
+    padding: 0 1rem;
+  }
+
+  .logo {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  .header .btn {
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 380px) {
+  .navbar a {
+    font-size: 1.2rem;
+  }
+}
+
+/* =========================
+   DESKTOP RESET
+========================= */
+@media (min-width: 769px) {
+  #menu-icon {
+    display: none;
+  }
+
+  .navbar {
+    position: static;
+    transform: none;
+    opacity: 1;
+    visibility: visible;
+  }
+}

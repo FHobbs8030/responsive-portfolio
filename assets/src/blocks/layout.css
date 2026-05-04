@@ -1,0 +1,171 @@
+/* =========================
+   HEADER
+========================= */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  z-index: 1000;
+
+  background: rgba(10, 10, 10, 0.85);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+.header__inner {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+
+  min-height: clamp(70px, 8vw, 90px);
+  padding: 0 clamp(1.2rem, 4vw, 3rem);
+}
+
+/* =========================
+   LOGO
+========================= */
+.logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: clamp(3.8rem, 5vw, 5rem);
+  height: clamp(3.8rem, 5vw, 5rem);
+
+  border: 2px solid var(--main-color);
+  border-radius: 50%;
+
+  position: relative;
+
+  transition:
+    transform 0.3s ease,
+    box-shadow 0.3s ease,
+    filter 0.3s ease;
+}
+
+.logo::before {
+  content: "";
+  position: absolute;
+
+  width: 60%;
+  height: 60%;
+
+  background: var(--main-color);
+  border-radius: 50%;
+
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  z-index: 1;
+}
+
+.logo span {
+  position: relative;
+  z-index: 2;
+  color: black;
+  font-weight: 700;
+}
+
+.logo:hover {
+  transform: scale(1.08);
+
+  box-shadow:
+    0 0 8px var(--main-color),
+    0 0 20px var(--main-color),
+    0 0 40px var(--main-color),
+    0 0 80px rgba(234, 88, 12, 0.4);
+
+  filter: brightness(1.1);
+}
+
+/* =========================
+   NAVBAR (CENTERED)
+========================= */
+.navbar {
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.8rem, 2.5vw, 3rem);
+}
+
+.navbar a {
+  font-size: clamp(1.2rem, 1.1vw, 1.6rem);
+  color: var(--text-color);
+  white-space: nowrap;
+
+  position: relative;
+  transition: color 0.3s ease, text-shadow 0.3s ease;
+}
+
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -5px;
+  width: 0%;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
+
+.navbar a:hover,
+.navbar a.active {
+  color: var(--main-color);
+  text-shadow: 0 0 6px var(--glow-mid), 0 0 12px var(--glow-soft);
+}
+
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+  
+  .header-btn {
+  justify-self: end;
+  align-self: center;
+  transform: translateY(-1px); 
+}
+
+/* =========================
+   MOBILE (≤768px)
+========================= */
+@media (max-width: 768px) {
+
+  /* Menu icon (left) */
+  #menu-icon {
+    display: flex;
+    position: absolute;
+    left: 0.5rem;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1001;
+  }
+
+  #menu-icon span {
+    width: 24px;
+    height: 2px;
+    background: var(--main-color);
+    border-radius: 2px;
+    display: block;
+  }
+
+  /* Logo moves to center */
+  .logo {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  .logo:hover {
+    transform: translateX(-50%) scale(1.05);
+  }
+
+  /* Hide nav */
+  .navbar {
+    display: none;
+  }
+}

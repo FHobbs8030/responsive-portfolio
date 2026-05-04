@@ -1,0 +1,11 @@
+@import "./base.css";
+@import "./layout.css";
+@import "./components.css";
+
+@import "./home.css";
+@import "./about.css";
+@import "./services.css";
+@import "./projects.css";
+@import "./contact.css";
+
+@import "./responsive.css";
