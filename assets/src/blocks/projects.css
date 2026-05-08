@@ -121,9 +121,28 @@
   border-radius: 0.8rem 0.8rem 0 0;
 }
 
+.project-image::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+
+  background:
+    linear-gradient(
+      to bottom,
+      rgba(0,0,0,0.05),
+      rgba(0,0,0,0.35)
+    );
+
+  pointer-events: none;
+}
+
 /* =========================
    FEATURED CARD
 ========================= */
+.project-card.featured {
+  position: relative;
+}
+
 .project-card.featured::after {
   content: "";
   position: absolute;
@@ -136,35 +155,80 @@
   pointer-events: none;
 }
 
+.project-card.featured .project-content h3 {
+  font-size: 1rem;
+}
+
+.project-card.featured .project-content p {
+  font-size: 0.84rem;
+}
+
 .project-card.featured img {
   max-height: 260px;
+  filter:
+    brightness(0.92)
+    contrast(1.05)
+    saturate(1.08);
 }
 
 /* =========================
    FEATURED BADGE
 ========================= */
+.featured-badge::before {
+  content: "";
+
+  position: absolute;
+  right: 0;
+  top: 0;
+
+  width: 14px;
+  height: 100%;
+
+  background: rgba(0,0,0,0.18);
+
+  clip-path: polygon(
+    100% 0,
+    0 50%,
+    100% 100%
+  );
+}
+
 .featured-badge {
   position: absolute;
   top: 18px;
   left: -5px;
 
-  background: #ea580c;
+  background: linear-gradient(
+    145deg,
+    #ff7a1a,
+    #ea580c 55%,
+    #c2410c
+  );
+
   color: #fff;
 
-  font-size: 0.75rem;
-  font-weight: 700;
+  font-size: 0.78rem;
+  font-weight: 800;
   letter-spacing: 0.08em;
   text-transform: uppercase;
 
-  padding: 0.45rem 3rem;
+  padding: 0.55rem 3.4rem;
+
   transform: rotate(-25deg);
 
   box-shadow:
-    0 8px 18px rgba(0, 0, 0, 0.75),
-    0 0 16px rgba(234, 88, 12, 0.7);
+    0 10px 22px rgba(0, 0, 0, 0.8),
+    0 0 18px rgba(234, 88, 12, 0.65),
+    inset 0 1px 1px rgba(255, 255, 255, 0.18),
+    inset 0 -2px 6px rgba(0, 0, 0, 0.28);
+
+  border-top: 1px solid rgba(255,255,255,0.15);
+  border-bottom: 1px solid rgba(0,0,0,0.3);
 
   z-index: 3;
   pointer-events: none;
+
+  overflow: hidden;
 }
 
 .featured-badge::after {
@@ -172,13 +236,15 @@
   position: absolute;
   inset: 0;
 
-  background: linear-gradient(
-    120deg,
-    rgba(255, 255, 255, 0.25),
-    transparent 60%
-  );
+  background:
+    linear-gradient(
+      120deg,
+      rgba(255,255,255,0.35),
+      rgba(255,255,255,0.05) 35%,
+      transparent 60%
+    );
 
-  mix-blend-mode: overlay;
+  opacity: 0.9;
 }
 
 /* =========================
@@ -197,8 +263,8 @@
 }
 
 .project-content p {
-  font-size: 0.72rem;
-  line-height: 1.4;
+  font-size: 0.82rem;
+  line-height: 1.5;
   opacity: 0.85;
   margin-top: 0.3rem;
 }

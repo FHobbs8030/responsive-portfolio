@@ -22,6 +22,11 @@ html {
   scroll-padding-top: var(--header-height);
 }
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 /* =========================
    VARIABLES
 ========================= */
@@ -36,7 +41,7 @@ html {
 
   --main-color: #ea580c;
 
-  --header-height: 85px;
+  --header-height: 55px;
 
   --section-pad-y: clamp(3rem, 5vh, 4.5rem);
   --section-pad-x: 2rem;
@@ -87,6 +92,8 @@ section {
   position: relative;
   padding: var(--section-pad-y) var(--section-pad-x);
   isolation: isolate;
+  overflow: hidden;
+  overflow: clip;
 }
 
 section:nth-child(even) {
@@ -101,6 +108,22 @@ section::before {
   background: radial-gradient(circle, rgba(234, 88, 12, 0.03), transparent 70%);
   pointer-events: none;
   z-index: 0;
+}
+
+section::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 1px;
+
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(234, 88, 12, 0.08),
+    transparent
+  );
 }
 
 /* =========================
