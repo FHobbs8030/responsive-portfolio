@@ -145,3 +145,17 @@ document.addEventListener("DOMContentLoaded", () => {
     submitBtn.classList.remove("loading");
   });
 });
+
+const tapTargets = document.querySelectorAll(
+  ".logo, .home-image .image-wrapper",
+);
+
+tapTargets.forEach((target) => {
+  target.addEventListener("touchstart", () => {
+    target.classList.add("tap-active");
+
+    setTimeout(() => {
+      target.classList.remove("tap-active");
+    }, 180);
+  });
+});

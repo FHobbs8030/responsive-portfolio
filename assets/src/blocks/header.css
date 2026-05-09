@@ -127,15 +127,7 @@
   .navbar a.active::after {
     width: 100%;
   }
-  
-  /* =========================
-   TOUCH FEEDBACK
-========================= */
-.logo:active {
-   transform: translateY(2px) scale(0.98);
 
-  box-shadow:
-    0 0 0 4px #ea580c,
-    0 0 24px rgba(234, 88, 12, 0.55),
-    0 0 48px rgba(234, 88, 12, 0.3);
+.logo.tap-active {
+  transform: translateY(2px) scale(0.98);
 }

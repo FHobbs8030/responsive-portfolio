@@ -3,22 +3,33 @@
 ========================= */
 .home {
   min-height: calc(100vh - var(--header-height));
+
   display: flex;
   align-items: center;
   justify-content: center;
+
   position: relative;
+
   padding-top: calc(var(--header-height) + 15px);
   padding-bottom: 2rem;
 }
 
 .home::after {
   content: "";
+
   position: absolute;
+
   bottom: 0;
   left: 0;
+
   width: 100%;
   height: 120px;
-  background: linear-gradient(to bottom, transparent, rgba(10, 10, 10, 1));
+
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(10, 10, 10, 1)
+  );
 }
 
 /* =========================
@@ -48,9 +59,12 @@
 .home-content {
   flex: 1 1 50%;
   max-width: 700px;
+
   padding-left: clamp(0.5rem, 1vw, 1.25rem);
+
   display: flex;
   flex-direction: column;
+
   gap: 1rem;
 }
 
@@ -61,20 +75,23 @@
 
 .home-content h1 {
   max-width: 650px;
+
   font-size: clamp(2.6rem, 4vw, 4.2rem);
   line-height: 1.1;
 }
 
 .home-content p {
   max-width: 60ch;
+
   font-size: 1.1rem;
-  color: var(--text-soft);
   line-height: 1.55;
+
+  color: var(--text-soft);
 }
 
 .home-content span {
-  margin-bottom: 0.6rem;
   display: inline-block;
+  margin-bottom: 0.6rem;
 }
 
 /* =========================
@@ -83,6 +100,7 @@
 .btn-group {
   display: flex;
   gap: 0.8rem;
+
   margin-top: 1.2rem;
 }
 
@@ -92,6 +110,7 @@
 .hero-social {
   display: flex;
   align-items: center;
+
   gap: 1.2rem;
 
   margin-top: 0.2rem;
@@ -100,20 +119,21 @@
 .hero-social a {
   width: 42px;
   height: 42px;
+
   overflow: hidden;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
+  position: relative;
+  z-index: 1;
+
   border-radius: 50%;
   border: 1px solid var(--main-color);
 
   color: var(--main-color);
   font-size: 1.5rem;
-
-  position: relative;
-  z-index: 1;
 
   transition:
     transform 0.25s ease,
@@ -122,42 +142,34 @@
     color 0.25s ease;
 }
 
-/* glow halo */
 .hero-social a::before {
   content: "";
+
   position: absolute;
-  inset: -8px;
+  inset: -6px;
+
   border-radius: 50%;
 
-  background: radial-gradient(circle, var(--glow-halo), transparent 70%);
+  background: radial-gradient(
+    circle,
+    var(--glow-halo),
+    transparent 70%
+  );
+
   opacity: 0;
 
   transition: opacity 0.25s ease;
-  filter: blur(10px);
+
+  -webkit-filter: blur(8px);
+  filter: blur(8px);
 
   z-index: -1;
-}
-
-/* hover */
-.hero-social a:hover {
-  transform: translateY(-3px) scale(1.06);
-
-  background: var(--main-color);
-  color: black;
-
-  box-shadow:
-    0 0 12px rgba(234, 88, 12, 0.45),
-    0 0 28px rgba(234, 88, 12, 0.25);
-}
-
-.hero-social a::before {
-  inset: -6px;
-  filter: blur(8px);
 }
 
 .home-actions {
   display: flex;
   flex-direction: column;
+
   gap: 1.5rem;
 }
 
@@ -168,42 +180,23 @@
   display: flex;
   justify-content: center;
   align-items: center;
+
   flex: 1;
-}
-
-.home-image .image-wrapper::before {
-  content: "";
-  position: absolute;
-  inset: -15px;
-  border-radius: 50%;
-
-  background: radial-gradient(
-    circle,
-    rgba(234, 88, 12, 0.35),
-    rgba(234, 88, 12, 0.15),
-    transparent 70%
-  );
-
-  filter: blur(25px);
-  z-index: -1;
-
-  opacity: 0.6;
-  transition:
-    opacity 0.4s ease,
-    transform 0.4s ease;
 }
 
 .home-image .image-wrapper {
   width: clamp(200px, 28vw, 420px);
-  border-radius: 50%;
-  padding: 10px;
+
+  position: relative;
+  overflow: visible;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
-  position: relative;
-  overflow: visible;
+  padding: 10px;
+
+  border-radius: 50%;
 
   transition:
     transform 0.4s ease,
@@ -213,25 +206,80 @@
   animation: glowPulse 5s ease-in-out infinite;
 }
 
-.home-image .image-wrapper:hover {
-  transform: translateY(-8px) scale(1.04);
+.home-image .image-wrapper::before {
+  content: "";
 
-  box-shadow:
-    0 0 25px rgba(234, 88, 12, 0.5),
-    0 0 60px rgba(234, 88, 12, 0.25),
-    0 0 120px rgba(234, 88, 12, 0.15);
+  position: absolute;
+  inset: -15px;
 
-  filter: brightness(1.05);
+  border-radius: 50%;
+
+  background: radial-gradient(
+    circle,
+    rgba(234, 88, 12, 0.35),
+    rgba(234, 88, 12, 0.15),
+    transparent 70%
+  );
+
+  opacity: 0.6;
+
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
+
+  -webkit-filter: blur(25px);
+  filter: blur(25px);
+
+  z-index: -1;
 }
 
-.home-image .image-wrapper:hover::before {
-  opacity: 1;
-  transform: scale(1.1);
+.home-image .image-wrapper.tap-active {
+  transform: translateY(-2px) scale(0.98);
 }
 
 .home-image img {
   width: 100%;
   height: auto;
-  border-radius: 50%;
+
   display: block;
+
+  border-radius: 50%;
+}
+
+/* =========================
+   DESKTOP HOVER SUPPORT
+========================= */
+@media (hover: hover) and (pointer: fine) {
+
+  .hero-social a:hover {
+    transform: translateY(-3px) scale(1.06);
+
+    background: var(--main-color);
+    color: black;
+
+    box-shadow:
+      0 0 12px rgba(234, 88, 12, 0.45),
+      0 0 28px rgba(234, 88, 12, 0.25);
+  }
+
+  .hero-social a:hover::before {
+    opacity: 1;
+  }
+
+  .home-image .image-wrapper:hover {
+    transform: translateY(-8px) scale(1.04);
+
+    box-shadow:
+      0 0 25px rgba(234, 88, 12, 0.5),
+      0 0 60px rgba(234, 88, 12, 0.25),
+      0 0 120px rgba(234, 88, 12, 0.15);
+
+    filter: brightness(1.05);
+  }
+
+  .home-image .image-wrapper:hover::before {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+
 }
