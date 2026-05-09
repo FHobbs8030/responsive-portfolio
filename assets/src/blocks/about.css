@@ -2,13 +2,17 @@
    ABOUT SECTION
 ========================= */
 #about {
-  min-height: 100vh;
+  min-height: 100svh;
+  min-height: 100dvh;
 
   display: flex;
   align-items: center;
   justify-content: center;
+
   padding-top: 2rem;
   padding-bottom: 4rem;
+
+  overflow: hidden;
 }
 
 .about-container {
@@ -16,31 +20,43 @@
   align-items: center;
   justify-content: center;
   gap: 3rem;
+
+  width: 100%;
+  max-width: 100%;
 }
 
 /* =========================
-   ABOUT IMAGE 
+   ABOUT IMAGE
 ========================= */
 .about-image {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
+
+  overflow: hidden;
 }
 
 .about-image .image-wrapper {
   position: relative;
 
   width: clamp(220px, 28vw, 320px);
+  max-width: 100%;
+
   aspect-ratio: 1 / 1;
 
   border-radius: 50%;
   padding: 12px;
 
-  background: #0a0a0a; 
+  overflow: hidden;
+  isolation: isolate;
+
+  background: #0a0a0a;
 
   box-shadow:
-  0 0 25px rgba(234, 88, 12, 0.45),
-  0 0 60px rgba(234, 88, 12, 0.18);
+    0 0 18px rgba(234, 88, 12, 0.35),
+    0 0 40px rgba(234, 88, 12, 0.15);
 
   animation: homeGlow 4s ease-in-out infinite;
 }
@@ -49,13 +65,17 @@
 .about-image .image-wrapper::before {
   content: "";
   position: absolute;
-  inset: -18px;
+  inset: -10px;
 
   border-radius: 50%;
 
-  background: radial-gradient(circle, rgba(234, 88, 12, 0.5), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(234, 88, 12, 0.35),
+    transparent 70%
+  );
 
-  filter: blur(18px);
+  filter: blur(12px);
   z-index: 0;
 }
 
@@ -64,8 +84,11 @@
   position: relative;
   z-index: 1;
 
+  display: block;
+
   width: 100%;
   height: 100%;
+
   object-fit: cover;
 
   border-radius: 50%;
@@ -77,18 +100,21 @@
   100% {
     box-shadow:
       0 0 0 4px #ea580c,
-      0 0 25px rgba(234, 88, 12, 0.5),
-      0 0 60px rgba(234, 88, 12, 0.3);
+      0 0 20px rgba(234, 88, 12, 0.45),
+      0 0 45px rgba(234, 88, 12, 0.22);
   }
+
   50% {
     box-shadow:
       0 0 0 4px #ea580c,
-      0 0 45px rgba(234, 88, 12, 0.8),
-      0 0 90px rgba(234, 88, 12, 0.5);
+      0 0 32px rgba(234, 88, 12, 0.6),
+      0 0 55px rgba(234, 88, 12, 0.32);
   }
 }
 
-/* CONTENT */
+/* =========================
+   CONTENT
+========================= */
 .about-content {
   max-width: 520px;
   margin-top: 0;
@@ -102,8 +128,10 @@
 
 .about-content .heading::after {
   content: "";
+
   width: 60px;
   height: 2px;
+
   display: block;
   margin-top: 0.7rem;
 
@@ -118,14 +146,21 @@
 .about-content p {
   font-size: clamp(1rem, 1.05vw, 1.08rem);
   line-height: 1.8;
+
   color: var(--text-lg);
 }
 
+/* =========================
+   TECH STACK TAGS
+========================= */
 .about-stack {
   display: flex;
   flex-wrap: wrap;
   gap: 0.6rem;
+
   margin-top: 0.8rem;
+
+  max-width: 100%;
 }
 
 .about-stack span {
@@ -158,7 +193,10 @@
   color: #fff;
   background: rgba(234, 88, 12, 0.12);
 
-  box-shadow: var(--ring), var(--glow-sm), var(--glow-md);
+  box-shadow:
+    var(--ring),
+    var(--glow-sm),
+    var(--glow-md);
 }
 
 .about-stack span::after {
@@ -174,6 +212,7 @@
   );
 
   opacity: 0;
+
   transform: translateX(-100%);
   transition: all 0.5s ease;
 }
