@@ -146,16 +146,20 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const tapTargets = document.querySelectorAll(
-  ".logo, .home-image .image-wrapper",
-);
+const logo = document.querySelector(".logo");
+const heroImage = document.querySelector(".home-image .image-wrapper");
 
-tapTargets.forEach((target) => {
-  target.addEventListener("touchstart", () => {
-    target.classList.add("tap-active");
+function addTapEffect(element) {
+  if (!element) return;
+
+  element.addEventListener("touchstart", () => {
+    element.classList.add("tap-active");
 
     setTimeout(() => {
-      target.classList.remove("tap-active");
+      element.classList.remove("tap-active");
     }, 180);
   });
-});
+}
+
+addTapEffect(logo);
+addTapEffect(heroImage);

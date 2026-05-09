@@ -5,12 +5,16 @@
   position: fixed;
   top: 0;
   left: 0;
+
   width: 100%;
   height: var(--header-height);
+
   z-index: 1000;
+
   padding: 0.8rem 0;
 
   background: rgba(10, 10, 10, 0.85);
+
   -webkit-backdrop-filter: blur(12px);
   backdrop-filter: blur(12px);
 
@@ -18,19 +22,22 @@
 }
 
 .header__inner {
-  max-width: 1200px;     /* 🔥 same as your content width */
-  margin: 0 auto;        /* center it */
-  padding: 0 2rem;       /* breathing room on edges */
+  width: 100%;
+  max-width: 1200px;
+
+  margin: 0 auto;
+  padding: 0 2rem;
 
   display: grid;
   grid-template-columns: auto 1fr auto;
   align-items: center;
-  width: 100%;
 }
 
 .header-btn {
   justify-self: end;
+
   white-space: nowrap;
+
   z-index: 10;
 }
 
@@ -38,6 +45,8 @@
    LOGO
 ========================= */
 .logo {
+  position: relative;
+
   display: flex;
   align-items: center;
   justify-content: center;
@@ -47,8 +56,6 @@
 
   border: 2px solid var(--main-color);
   border-radius: 50%;
-
-  position: relative;
 
   transform: translateY(2px);
 
@@ -60,16 +67,19 @@
 
 .logo::before {
   content: "";
+
   position: absolute;
+
+  top: 50%;
+  left: 50%;
 
   width: 60%;
   height: 60%;
 
-  background: var(--main-color);
   border-radius: 50%;
 
-  top: 50%;
-  left: 50%;
+  background: var(--main-color);
+
   transform: translate(-50%, -50%);
 
   z-index: 1;
@@ -78,10 +88,14 @@
 .logo span {
   position: relative;
   z-index: 2;
+
   color: black;
   font-weight: 700;
 }
 
+/* =========================
+   DESKTOP HOVER
+========================= */
 @media (hover: hover) and (pointer: fine) {
 
   .logo:hover {
@@ -98,3 +112,13 @@
 
 }
 
+/* =========================
+   TOUCH TAP EFFECT
+========================= */
+.logo.tap-active {
+  transform: translateY(2px) scale(0.98);
+
+  box-shadow:
+    0 0 10px rgba(234, 88, 12, 0.45),
+    0 0 24px rgba(234, 88, 12, 0.25);
+}
