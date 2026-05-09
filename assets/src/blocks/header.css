@@ -132,7 +132,7 @@
    TOUCH FEEDBACK
 ========================= */
 .logo:active {
-  transform: scale(0.96);
+   transform: translateY(2px) scale(0.98);
 
   box-shadow:
     0 0 0 4px #ea580c,

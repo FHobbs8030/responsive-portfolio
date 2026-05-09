@@ -98,16 +98,3 @@
 
 }
 
-/* =========================
-   TOUCH FEEDBACK
-========================= */
-.logo:active {
-  transform: translateY(2px) scale(1.02);
-
-  box-shadow:
-    0 0 8px var(--main-color),
-    0 0 24px rgba(234, 88, 12, 0.55),
-    0 0 48px rgba(234, 88, 12, 0.3);
-
-  filter: brightness(1.08);
-}
