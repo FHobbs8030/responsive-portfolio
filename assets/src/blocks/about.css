@@ -2,6 +2,8 @@
    ABOUT SECTION
 ========================= */
 #about {
+  position: relative;
+
   min-height: 100svh;
   min-height: 100dvh;
 
@@ -13,6 +15,11 @@
   padding-bottom: 4rem;
 
   overflow: hidden;
+  isolation: isolate;
+}
+
+#about > * {
+  min-width: 0;
 }
 
 .about-container {
@@ -23,6 +30,7 @@
 
   width: 100%;
   max-width: 100%;
+  min-width: 0;
 }
 
 /* =========================
@@ -34,6 +42,8 @@
   display: flex;
   align-items: center;
   justify-content: center;
+
+  min-width: 0;
 
   overflow: hidden;
 }
@@ -52,6 +62,9 @@
   overflow: hidden;
   isolation: isolate;
 
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+
   background: #0a0a0a;
 
   box-shadow:
@@ -65,18 +78,17 @@
 .about-image .image-wrapper::before {
   content: "";
   position: absolute;
-  inset: -10px;
+  inset: -8px;
 
   border-radius: 50%;
 
-  background: radial-gradient(
-    circle,
-    rgba(234, 88, 12, 0.35),
-    transparent 70%
-  );
+  background: radial-gradient(circle, rgba(234, 88, 12, 0.28), transparent 70%);
 
-  filter: blur(12px);
+  -webkit-filter: blur(10px);
+  filter: blur(10px);
+
   z-index: 0;
+  pointer-events: none;
 }
 
 /* Image */
@@ -92,6 +104,9 @@
   object-fit: cover;
 
   border-radius: 50%;
+
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 
 /* SAME animation as Home */
@@ -100,15 +115,15 @@
   100% {
     box-shadow:
       0 0 0 4px #ea580c,
-      0 0 20px rgba(234, 88, 12, 0.45),
-      0 0 45px rgba(234, 88, 12, 0.22);
+      0 0 18px rgba(234, 88, 12, 0.4),
+      0 0 40px rgba(234, 88, 12, 0.2);
   }
 
   50% {
     box-shadow:
       0 0 0 4px #ea580c,
-      0 0 32px rgba(234, 88, 12, 0.6),
-      0 0 55px rgba(234, 88, 12, 0.32);
+      0 0 28px rgba(234, 88, 12, 0.55),
+      0 0 48px rgba(234, 88, 12, 0.28);
   }
 }
 
@@ -117,12 +132,15 @@
 ========================= */
 .about-content {
   max-width: 520px;
+  min-width: 0;
+
   margin-top: 0;
 }
 
 .about-content .heading {
   font-size: clamp(2.4rem, 3vw, 3rem);
   font-weight: 600;
+
   margin-bottom: 0.6rem;
 }
 
@@ -161,6 +179,7 @@
   margin-top: 0.8rem;
 
   max-width: 100%;
+  min-width: 0;
 }
 
 .about-stack span {
@@ -193,10 +212,7 @@
   color: #fff;
   background: rgba(234, 88, 12, 0.12);
 
-  box-shadow:
-    var(--ring),
-    var(--glow-sm),
-    var(--glow-md);
+  box-shadow: var(--ring), var(--glow-sm), var(--glow-md);
 }
 
 .about-stack span::after {
