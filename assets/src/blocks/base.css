@@ -339,6 +339,41 @@ section::after {
 }
 
 /* =========================
+   DESKTOP HOVER SUPPORT
+========================= */
+@media (hover: hover) and (pointer: fine) {
+
+  .logo:hover,
+  .home-image .image-wrapper:hover,
+  .project-card:hover,
+  .service-box:hover,
+  .btn:hover,
+  .header-btn:hover,
+  .navbar a:hover {
+    transition: all 0.3s ease;
+  }
+
+}
+
+/* =========================
+   TOUCH DEVICE FIXES
+========================= */
+@media (hover: none) and (pointer: coarse) {
+
+  .logo:hover,
+  .home-image .image-wrapper:hover,
+  .project-card:hover,
+  .service-box:hover,
+  .btn:hover,
+  .header-btn:hover,
+  .navbar a:hover {
+    transform: none !important;
+    box-shadow: inherit !important;
+  }
+
+}
+
+/* =========================
    ANIMATIONS
 ========================= */
 @keyframes glowPulse {
