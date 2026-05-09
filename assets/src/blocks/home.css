@@ -25,24 +25,30 @@
    CONTAINER
 ========================= */
 .home-container {
-  max-width: 1200px;
   width: 100%;
+  max-width: 1400px;
+
+  min-height: calc(100svh - var(--header-height));
+
   margin: 0 auto;
-  padding: 0 1.6rem;
-  margin-top: 10px;
+
+  padding-inline: clamp(1rem, 2vw, 2rem);
+  padding-block: 2rem;
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  gap: clamp(1.5rem, 3vw, 2.5rem);
+  gap: clamp(2rem, 4vw, 5rem);
 }
 
 /* =========================
    LEFT CONTENT
 ========================= */
 .home-content {
-  max-width: 520px;
+  flex: 1 1 50%;
+  max-width: 700px;
+  padding-left: clamp(0.5rem, 1vw, 1.25rem);
   display: flex;
   flex-direction: column;
   gap: 1rem;
@@ -60,7 +66,7 @@
 }
 
 .home-content p {
-  max-width: 520px;
+  max-width: 60ch;
   font-size: 1.1rem;
   color: var(--text-soft);
   line-height: 1.55;
@@ -88,7 +94,7 @@
   align-items: center;
   gap: 1.2rem;
 
-  margin-top: 0.2rem; 
+  margin-top: 0.2rem;
 }
 
 .hero-social a {
@@ -145,14 +151,14 @@
 }
 
 .hero-social a::before {
-  inset: -6px; 
-  filter: blur(8px); 
+  inset: -6px;
+  filter: blur(8px);
 }
 
 .home-actions {
   display: flex;
   flex-direction: column;
-  gap: 1.5rem; 
+  gap: 1.5rem;
 }
 
 /* =========================
