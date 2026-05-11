@@ -1,138 +1,141 @@
 /* =========================
      HEADER
   ========================= */
-  .header {
-    position: fixed;
-    width: 100%;
-    padding: 0.65rem 1.2rem;
-    z-index: 1000;
-  }
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  min-height: 72px;
+  padding: 0.9rem 1.2rem;
+  z-index: 1000;
+}
 
-  .header__inner {
-    position: relative;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
+.header__inner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
 
-  /* =========================
+/* =========================
      NAV PANEL
   ========================= */
-  .navbar {
-    position: absolute;
-    top: 50%;
-    left: 0;
+.navbar {
+  position: absolute;
+  top: 50%;
+  left: 0;
 
-    width: 260px;
-    padding: 1.6rem;
-    margin-top: -5px;
+  width: 260px;
+  padding: 1.6rem;
+  margin-top: -5px;
 
-    display: flex;
-    flex-direction: column;
-    gap: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
 
-    background: rgba(10, 10, 10, 0.85);
-    border-radius: 14px;
+  background: rgba(10, 10, 10, 0.85);
+  border-radius: 14px;
 
-    -webkit-backdrop-filter: blur(10px);
-    backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
 
-    border: 1px solid rgba(234, 88, 12, 0.2);
+  border: 1px solid rgba(234, 88, 12, 0.2);
 
-    box-shadow:
-      0 0 25px rgba(234, 88, 12, 0.15),
-      0 10px 40px rgba(0, 0, 0, 0.7);
+  box-shadow:
+    0 0 25px rgba(234, 88, 12, 0.15),
+    0 10px 40px rgba(0, 0, 0, 0.7);
 
-    transform: translateX(-120%);
-    opacity: 0;
-    visibility: hidden;
+  transform: translateX(-120%);
+  opacity: 0;
+  visibility: hidden;
 
-    transition:
-      transform 0.35s ease,
-      opacity 0.3s ease;
+  transition:
+    transform 0.35s ease,
+    opacity 0.3s ease;
 
-    z-index: 1001;
-  }
+  z-index: 1001;
+}
 
-  .navbar.active {
-    transform: translateX(0);
-    opacity: 1;
-    visibility: visible;
-  }
+.navbar.active {
+  transform: translateX(0);
+  opacity: 1;
+  visibility: visible;
+}
 
-  /* =========================
+/* =========================
      NAV LINKS
   ========================= */
-  .navbar a {
-    font-size: 1.5rem;
-    color: var(--text-color);
-    width: 100%;
-    position: relative;
+.navbar a {
+  font-size: 1.5rem;
+  color: var(--text-color);
+  width: 100%;
+  position: relative;
 
-    opacity: 0;
-    transform: translateX(-10px);
+  opacity: 0;
+  transform: translateX(-10px);
 
-    transition:
-      color 0.3s ease,
-      text-shadow 0.3s ease,
-      transform 0.3s ease,
-      opacity 0.3s ease;
-  }
+  transition:
+    color 0.3s ease,
+    text-shadow 0.3s ease,
+    transform 0.3s ease,
+    opacity 0.3s ease;
+}
 
-  /* 🔥 Stagger animation */
-  .navbar.active a {
-    opacity: 1;
-    transform: translateX(0);
-  }
+/* 🔥 Stagger animation */
+.navbar.active a {
+  opacity: 1;
+  transform: translateX(0);
+}
 
-  .navbar.active a:nth-child(1) {
-    transition-delay: 0.05s;
-  }
-  .navbar.active a:nth-child(2) {
-    transition-delay: 0.1s;
-  }
-  .navbar.active a:nth-child(3) {
-    transition-delay: 0.15s;
-  }
-  .navbar.active a:nth-child(4) {
-    transition-delay: 0.2s;
-  }
-  .navbar.active a:nth-child(5) {
-    transition-delay: 0.25s;
-  }
+.navbar.active a:nth-child(1) {
+  transition-delay: 0.05s;
+}
+.navbar.active a:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.navbar.active a:nth-child(3) {
+  transition-delay: 0.15s;
+}
+.navbar.active a:nth-child(4) {
+  transition-delay: 0.2s;
+}
+.navbar.active a:nth-child(5) {
+  transition-delay: 0.25s;
+}
 
-  /* =========================
+/* =========================
      LINK HOVER (GLOW)
   ========================= */
-  .navbar a:hover,
-  .navbar a.active {
-    color: var(--main-color);
-    text-shadow:
-      0 0 6px rgba(234, 88, 12, 0.6),
-      0 0 14px rgba(234, 88, 12, 0.4);
-  }
+.navbar a:hover,
+.navbar a.active {
+  color: var(--main-color);
+  text-shadow:
+    0 0 6px rgba(234, 88, 12, 0.6),
+    0 0 14px rgba(234, 88, 12, 0.4);
+}
 
-  .navbar a::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    bottom: -6px;
-    width: 0%;
-    height: 2px;
-    background: var(--main-color);
-    transition: width 0.3s ease;
-  }
+.navbar a::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -6px;
+  width: 0%;
+  height: 2px;
+  background: var(--main-color);
+  transition: width 0.3s ease;
+}
 
-  .navbar a:hover::after,
-  .navbar a.active::after {
-    width: 100%;
-  }
-  
-  /* =========================
+.navbar a:hover::after,
+.navbar a.active::after {
+  width: 100%;
+}
+
+/* =========================
    TOUCH FEEDBACK
 ========================= */
 .logo:active {
-   transform: translateY(2px) scale(0.98);
+  transform: translateY(2px) scale(0.98);
 
   box-shadow:
     0 0 0 4px #ea580c,

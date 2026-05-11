@@ -12,27 +12,28 @@
   justify-content: center;
 
   padding-top: 2rem;
-  padding-bottom: 4rem;
+  padding-bottom: 3rem;
 
-  overflow: hidden;
+  overflow: visible;
   isolation: isolate;
-}
-
-#about > * {
-  min-width: 0;
 }
 
 .about-container {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 3rem;
+
+  gap: clamp(1.5rem, 2vw, 3rem);
 
   width: 100%;
-  max-width: 100%;
-  min-width: 0;
+  max-width: 1200px;
+
+  margin-inline: auto;
 }
 
+/* =========================
+   ABOUT IMAGE
+========================= */
 /* =========================
    ABOUT IMAGE
 ========================= */
@@ -45,203 +46,219 @@
 
   min-width: 0;
 
-  overflow: hidden;
+  overflow: visible;
 }
 
-.about-image .image-wrapper {
-  position: relative;
-
-  width: clamp(220px, 28vw, 320px);
-  max-width: 100%;
-
-  aspect-ratio: 1 / 1;
-
-  border-radius: 50%;
-  padding: 12px;
-
-  overflow: hidden;
-  isolation: isolate;
-
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-
-  background: #0a0a0a;
-
-  box-shadow:
-    0 0 18px rgba(234, 88, 12, 0.35),
-    0 0 40px rgba(234, 88, 12, 0.15);
-
-  animation: homeGlow 4s ease-in-out infinite;
-}
-
-/* Outer glow halo */
-.about-image .image-wrapper::before {
+/* Ambient outer glow */
+.about-image::before {
   content: "";
+
   position: absolute;
-  inset: -8px;
+
+  width: 115%;
+  height: 115%;
 
   border-radius: 50%;
 
-  background: radial-gradient(circle, rgba(234, 88, 12, 0.28), transparent 70%);
+  background: radial-gradient(
+    circle,
+    rgba(234, 88, 12, 0.62),
+    rgba(234, 88, 12, 0.26),
+    transparent 72%
+  );
 
-  -webkit-filter: blur(10px);
-  filter: blur(10px);
+  filter: blur(42px);
+
+  opacity: 0.95;
 
   z-index: 0;
   pointer-events: none;
-}
-
-/* Image */
-.about-image img {
-  position: relative;
-  z-index: 1;
-
-  display: block;
-
-  width: 100%;
-  height: 100%;
-
-  object-fit: cover;
-
-  border-radius: 50%;
-
-  -webkit-transform: translateZ(0);
-  transform: translateZ(0);
-}
-
-/* SAME animation as Home */
-@keyframes homeGlow {
-  0%,
-  100% {
-    box-shadow:
-      0 0 0 4px #ea580c,
-      0 0 18px rgba(234, 88, 12, 0.4),
-      0 0 40px rgba(234, 88, 12, 0.2);
-  }
-
-  50% {
-    box-shadow:
-      0 0 0 4px #ea580c,
-      0 0 28px rgba(234, 88, 12, 0.55),
-      0 0 48px rgba(234, 88, 12, 0.28);
-  }
-}
-
-/* =========================
-   CONTENT
-========================= */
-.about-content {
-  max-width: 520px;
-  min-width: 0;
-
-  margin-top: 0;
-}
-
-.about-content .heading {
-  font-size: clamp(2.4rem, 3vw, 3rem);
-  font-weight: 600;
-
-  margin-bottom: 0.6rem;
-}
-
-.about-content .heading::after {
-  content: "";
-
-  width: 60px;
-  height: 2px;
-
-  display: block;
-  margin-top: 0.7rem;
-
-  background: var(--main-color);
-  box-shadow: var(--glow-sm);
-}
-
-.about-content .heading span {
-  color: var(--main-color);
-}
-
-.about-content p {
-  font-size: clamp(1rem, 1.05vw, 1.08rem);
-  line-height: 1.8;
-
-  color: var(--text-lg);
-}
-
-/* =========================
-   TECH STACK TAGS
-========================= */
-.about-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.6rem;
-
-  margin-top: 0.8rem;
-
-  max-width: 100%;
-  min-width: 0;
-}
-
-.about-stack span {
-  position: relative;
-  overflow: hidden;
-
-  font-size: 0.92rem;
-  padding: 0.44rem 0.9rem;
-
-  border-radius: 20px;
-
-  color: var(--main-color);
-
-  border: 1px solid rgba(234, 88, 12, 0.4);
-  background: rgba(234, 88, 12, 0.05);
-
-  -webkit-backdrop-filter: blur(8px);
-  backdrop-filter: blur(8px);
 
   transition:
-    transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
-    background 0.25s ease,
-    color 0.25s ease;
+    opacity 0.2s ease,
+    transform 0.2s ease;
 }
 
-.about-stack span:hover {
-  transform: translateY(-3px) scale(1.05);
+  .about-image:hover::before {
+    opacity: 1;
+    transform: scale(1.08);
+  }
 
-  color: #fff;
-  background: rgba(234, 88, 12, 0.12);
+  .about-image .image-wrapper {
+    position: relative;
 
-  box-shadow: var(--ring), var(--glow-sm), var(--glow-md);
-}
+    width: clamp(220px, 24vw, 290px);
+    max-width: 100%;
 
-.about-stack span::after {
-  content: "";
-  position: absolute;
-  inset: 0;
+    aspect-ratio: 1 / 1;
 
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.25),
-    transparent 70%
-  );
+    border-radius: 50%;
+    padding: 12px;
 
-  opacity: 0;
+    overflow: hidden;
 
-  transform: translateX(-100%);
-  transition: all 0.5s ease;
-}
+    background: #0a0a0a;
 
-.about-stack span:hover::after {
-  opacity: 1;
-  transform: translateX(100%);
-}
+    z-index: 1;
 
-.about-stack span:nth-child(odd):hover {
-  transform: translateY(-3px) scale(1.06);
-}
+    box-shadow:
+      0 0 18px rgba(234, 88, 12, 0.35),
+      0 0 24px rgba(234, 88, 12, 0.1);
 
-.about-stack span:nth-child(even):hover {
-  transform: translateY(-2px) scale(1.04);
-}
+    transition:
+      transform 0.22s ease,
+      box-shadow 0.22s ease;
+
+    animation: homeGlow 4s ease-in-out infinite;
+  }
+
+  .about-image .image-wrapper:hover {
+    transform: translateY(-6px) scale(1.03);
+
+    box-shadow:
+      0 0 24px rgba(234, 88, 12, 0.45),
+      0 0 42px rgba(234, 88, 12, 0.2);
+  }
+
+  .about-image img {
+    display: block;
+
+    width: 100%;
+    height: 100%;
+
+    object-fit: cover;
+
+    border-radius: 50%;
+  }
+
+  /* SAME animation as Home */
+  @keyframes homeGlow {
+    0%,
+    100% {
+      box-shadow:
+        0 0 0 4px #ea580c,
+        0 0 18px rgba(234, 88, 12, 0.4),
+        0 0 40px rgba(234, 88, 12, 0.2);
+    }
+
+    50% {
+      box-shadow:
+        0 0 0 4px #ea580c,
+        0 0 28px rgba(234, 88, 12, 0.55),
+        0 0 48px rgba(234, 88, 12, 0.28);
+    }
+  }
+
+  /* =========================
+   CONTENT
+========================= */
+  .about-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 680px;
+    min-width: 0;
+  }
+
+  .about-content .heading {
+    font-size: clamp(2.7rem, 3.4vw, 3.4rem);
+    font-weight: 600;
+    margin-bottom: 0.6rem;
+  }
+
+  .about-content .heading::after {
+    content: "";
+    width: 60px;
+    height: 2px;
+    display: block;
+    margin-top: 0.7rem;
+    background: var(--main-color);
+    box-shadow: var(--glow-sm);
+  }
+
+  .about-content .heading span {
+    color: var(--main-color);
+  }
+
+  .about-content > * {
+    margin-bottom: 0;
+  }
+
+  .about-content p {
+    font-size: clamp(1.12rem, 1.25vw, 1.28rem);
+    line-height: 1.75;
+    max-width: 66ch;
+    color: var(--text-lg);
+  }
+
+  .about-content p + p {
+    margin-top: 1.2rem;
+  }
+
+  /* =========================
+   TECH STACK TAGS
+========================= */
+  .about-stack {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-top: 1rem;
+    margin-bottom: 1.4rem;
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .about-stack span {
+    position: relative;
+    overflow: hidden;
+    font-size: 0.82rem;
+    padding: 0.38rem 0.8rem;
+    border-radius: 20px;
+    color: var(--main-color);
+    border: 1px solid rgba(234, 88, 12, 0.4);
+    background: rgba(234, 88, 12, 0.05);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    transition:
+      transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
+      background 0.25s ease,
+      color 0.25s ease;
+  }
+
+  .about-stack span:hover {
+    color: #fff;
+    background: rgba(234, 88, 12, 0.12);
+
+    box-shadow: var(--ring), var(--glow-sm), var(--glow-md);
+  }
+
+  .about-stack span::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+      120deg,
+      transparent 30%,
+      rgba(255, 255, 255, 0.25),
+      transparent 70%
+    );
+
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: all 0.5s ease;
+  }
+
+  .about-stack span:hover::after {
+    opacity: 1;
+    transform: translateX(100%);
+  }
+
+  .about-stack span:nth-child(odd):hover {
+    transform: translateY(-3px) scale(1.06);
+  }
+
+  .about-stack span:nth-child(even):hover {
+    transform: translateY(-2px) scale(1.04);
+  }
+

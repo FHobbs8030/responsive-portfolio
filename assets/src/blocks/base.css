@@ -227,6 +227,9 @@ section::after {
 /* =========================
    HOME IMAGE SYSTEM (FIXED)
 ========================= */
+/* =========================
+   HOME / ABOUT SHARED SECTION BASE
+========================= */
 #home,
 #about {
   min-height: 100vh;
@@ -239,8 +242,10 @@ section::after {
   padding-bottom: var(--section-padding-y);
 }
 
-.home-container,
-.about-container {
+/* =========================
+   HOME LAYOUT
+========================= */
+.home-container {
   width: 100%;
   max-width: var(--content-max-width);
 
@@ -251,37 +256,114 @@ section::after {
   gap: var(--space-xl);
 }
 
-.home-content,
-.about-content {
+.home-content {
   max-width: var(--content-narrow);
 }
 
-.home-content > *,
-.about-content > * {
+.home-content > * {
   margin-bottom: var(--space-md);
 }
 
-.home-content > *:last-child,
-.about-content > *:last-child {
+.home-content > *:last-child {
   margin-bottom: 0;
 }
 
-.home-content .heading,
-.about-content .heading {
+.home-content .heading {
   margin-bottom: var(--space-sm);
 }
 
-.home-content .heading::after,
-.about-content .heading::after {
+.home-content .heading::after {
   margin-top: var(--space-xs);
 }
 
-.about-stack,
 .home-socials {
   margin-top: var(--space-sm);
   gap: var(--space-xs);
 }
 
+/* =========================
+   ABOUT LAYOUT
+========================= */
+.about-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: clamp(1.5rem, 2vw, 3rem);
+
+  width: 100%;
+  max-width: 1200px;
+
+  margin-inline: auto;
+}
+
+.about-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  max-width: 680px;
+  min-width: 0;
+
+  padding-top: 0.75rem;
+}
+
+.about-content > * {
+  margin-bottom: 0;
+}
+
+.about-content .heading {
+  font-size: clamp(2.4rem, 3vw, 3rem);
+  font-weight: 600;
+
+  margin-bottom: 0.6rem;
+}
+
+.about-content .heading::after {
+  content: "";
+
+  width: 60px;
+  height: 2px;
+
+  display: block;
+  margin-top: 0.7rem;
+
+  background: var(--main-color);
+  box-shadow: var(--glow-sm);
+}
+
+.about-content .heading span {
+  color: var(--main-color);
+}
+
+.about-content p {
+  font-size: clamp(1.08rem, 1.2vw, 1.22rem);
+  line-height: 1.75;
+
+  max-width: 58ch;
+
+  color: var(--text-lg);
+}
+
+.about-content p + p {
+  margin-top: 1.2rem;
+}
+
+.about-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+
+  margin-top: 1rem;
+  margin-bottom: 1.4rem;
+
+  max-width: 100%;
+  min-width: 0;
+}
+
+/* =========================
+   HOME IMAGE SYSTEM
+========================= */
 .home-image .image-wrapper {
   width: clamp(200px, 28vw, 420px);
   border-radius: 50%;
@@ -319,16 +401,16 @@ section::after {
   );
 
   animation: glowPulse 5s ease-in-out infinite;
-  box-shadow: none; 
 
   filter: blur(25px);
   z-index: -1;
 
   opacity: 0.7;
-  transition: opacity 0.4s ease, transform 0.4s ease;
+  transition:
+    opacity 0.4s ease,
+    transform 0.4s ease;
 }
 
-/* Hover interaction */
 .home-image .image-wrapper:hover {
   transform: translateY(-6px) scale(1.03);
 }
