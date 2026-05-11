@@ -50,31 +50,18 @@
    992px
 ========================= */
 @media (max-width: 992px) {
-  .home {
-    align-items: flex-start;
-    padding-top: calc(var(--header-height) + 3rem);
-  }
-
   .home-container {
-    gap: 1.4rem;
-    margin-top: 1rem;
+    gap: 3rem;
+    padding-inline: 2rem;
   }
 
-  .home-content {
-    max-width: 420px;
+  .home-content h1 {
+    font-size: clamp(3.2rem, 5vw, 4.6rem);
+    line-height: 1.08;
   }
 
   .home-image .image-wrapper {
-    max-width: 240px;
-  }
-
-  .services-container,
-  .services-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-
-  .projects-layout {
-    grid-template-columns: 1.4fr 1fr;
+    width: clamp(240px, 32vw, 340px);
   }
 }
 
@@ -160,24 +147,52 @@
   }
 
   .home {
-    min-height: 100svh;
-    min-height: 100dvh;
-
-    padding-bottom: 3rem;
-  }
-
-  .home-image .image-wrapper {
-    width: clamp(260px, 34vw, 340px);
+    padding-top: calc(var(--header-height) + 1rem);
   }
 
   .home-container {
+    flex-direction: column-reverse;
+
+    justify-content: center;
     align-items: center;
-    flex-direction: row;
-    justify-content: space-between;
+
+    text-align: center;
+
+    gap: 2rem;
+
+    min-height: unset;
+
+    padding-inline: 1.5rem;
+    padding-bottom: 3rem;
   }
 
   .home-content {
-    padding-top: 1.5rem;
+    max-width: 100%;
+    align-items: center;
+  }
+
+  .home-content h1 {
+    font-size: clamp(2.8rem, 7vw, 4rem);
+    line-height: 1.1;
+  }
+
+  .home-content p {
+    max-width: 580px;
+    margin-inline: auto;
+  }
+
+  .home-buttons,
+  .social-icons {
+    justify-content: center;
+  }
+
+  .home-image {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .home-image .image-wrapper {
+    width: clamp(220px, 45vw, 320px);
   }
 
   #about {
