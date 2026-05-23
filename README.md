@@ -84,7 +84,7 @@ Showcases development capabilities including frontend, backend, and full-stack a
 
 <p align="center">
   <img
-    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Contact.png"
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/contact.png"
     alt="Home Section Preview"
     width="50%"
   />
