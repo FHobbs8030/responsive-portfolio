@@ -33,49 +33,48 @@ Designed with a **dark UI system**, **glow-based interactions**, and **clean res
 
 ### 🏠 Home Section
 
-![Home Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Home.png)
-
-📂 Image Path:
-
-```bash
-assets/images/Home.png
-```
-
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Home.png"
+    alt="Home Section Preview"
+    width="50%"
+  />
+</p>
 ---
 
 ### 👤 About Section
 
-![About Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/About.png)
-
-📂 Image Path:
-
-```bash
-assets/images/About.png
-```
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/About.png"
+    alt="Home Section Preview"
+    width="50%"
+  />
+</p>
 
 ---
 
 ### 💼 Projects Section
 
-![Projects Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Projects.png)
-
-📂 Image Path:
-
-```bash
-assets/images/Projects.png
-```
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Projects.png"
+    alt="Home Section Preview"
+    width="50%"
+  />
+</p>
 
 ---
 
 ### 🛠 Services Section
 
-![Services Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Services.png)
-
-📂 Image Path:
-
-```bash
-assets/images/Services.png
-```
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Services.png"
+    alt="Home Section Preview"
+    width="50%"
+  />
+</p>
 
 Showcases development capabilities including frontend, backend, and full-stack application design.
 
@@ -83,13 +82,13 @@ Showcases development capabilities including frontend, backend, and full-stack a
 
 ### 📬 Contact Section
 
-![Contact Preview](https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/contact.png)
-
-📂 Image Path:
-
-```bash
-assets/images/contact.png
-```
+<p align="center">
+  <img
+    src="https://raw.githubusercontent.com/FHobbs8030/responsive-portfolio/main/assets/images/Contact.png"
+    alt="Home Section Preview"
+    width="50%"
+  />
+</p>
 
 Includes a functional contact form powered by Formspree with real-time submission feedback and spam protection.
 
