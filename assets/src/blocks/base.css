@@ -58,6 +58,7 @@ body {
   --color-border-primary: rgba(var(--color-primary-rgb), 0.4);
 
   --color-shine: rgba(255, 255, 255, 0.35);
+  --color-shine-soft: rgba(255, 255, 255, 0.25);
 
   --color-success: #22c55e;
   --color-error: #ef4444;
