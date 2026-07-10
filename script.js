@@ -2,66 +2,119 @@
    THEME ENGINE
 ========================= */
 const THEME_STORAGE_KEY = "portfolio-theme";
+const THEME_PREFERENCES = ["night", "auto", "day"];
 
 const rootElement = document.documentElement;
 const themeToggle = document.querySelector(".theme-toggle");
 
-const isSupportedTheme = (theme) => {
-  return theme === "night" || theme === "day";
+const systemThemeQuery =
+  typeof window.matchMedia === "function"
+    ? window.matchMedia("(prefers-color-scheme: dark)")
+    : null;
+
+const isSupportedThemePreference = (preference) => {
+  return THEME_PREFERENCES.includes(preference);
 };
 
-const getSavedTheme = () => {
+const getSavedThemePreference = () => {
   try {
-    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+    const savedPreference = localStorage.getItem(THEME_STORAGE_KEY);
 
-    return isSupportedTheme(savedTheme) ? savedTheme : null;
+    return isSupportedThemePreference(savedPreference)
+      ? savedPreference
+      : null;
   } catch {
     return null;
   }
 };
 
-const saveTheme = (theme) => {
+const saveThemePreference = (preference) => {
   try {
-    localStorage.setItem(THEME_STORAGE_KEY, theme);
+    localStorage.setItem(THEME_STORAGE_KEY, preference);
   } catch {
     // Theme switching still works when storage is unavailable.
   }
 };
 
-const updateThemeToggle = (theme) => {
+const getSystemTheme = () => {
+  if (!systemThemeQuery) return "night";
+
+  return systemThemeQuery.matches ? "night" : "day";
+};
+
+const resolveTheme = (preference) => {
+  return preference === "auto" ? getSystemTheme() : preference;
+};
+
+const getNextThemePreference = (preference) => {
+  const currentIndex = THEME_PREFERENCES.indexOf(preference);
+  const nextIndex = (currentIndex + 1) % THEME_PREFERENCES.length;
+
+  return THEME_PREFERENCES[nextIndex];
+};
+
+const updateThemeToggle = (preference, resolvedTheme) => {
   if (!themeToggle) return;
 
-  const isDayTheme = theme === "day";
-  const nextTheme = isDayTheme ? "night" : "day";
+  const nextPreference = getNextThemePreference(preference);
 
-  themeToggle.setAttribute("aria-pressed", String(isDayTheme));
-  themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
-  themeToggle.setAttribute("title", `Switch to ${nextTheme} mode`);
+  themeToggle.setAttribute(
+    "aria-label",
+    `Theme preference: ${preference}. Current theme: ${resolvedTheme}. Switch to ${nextPreference} mode`,
+  );
+
+  themeToggle.setAttribute(
+    "title",
+    `Switch to ${nextPreference} mode`,
+  );
 };
 
-const applyTheme = (theme) => {
-  const resolvedTheme = isSupportedTheme(theme) ? theme : "night";
+const applyThemePreference = (preference) => {
+  const resolvedPreference = isSupportedThemePreference(preference)
+    ? preference
+    : "night";
 
+  const resolvedTheme = resolveTheme(resolvedPreference);
+
+  rootElement.dataset.themePreference = resolvedPreference;
   rootElement.dataset.theme = resolvedTheme;
-  updateThemeToggle(resolvedTheme);
+
+  updateThemeToggle(resolvedPreference, resolvedTheme);
 };
 
-const initialTheme =
-  getSavedTheme() ??
-  (isSupportedTheme(rootElement.dataset.theme)
-    ? rootElement.dataset.theme
+const initialThemePreference =
+  getSavedThemePreference() ??
+  (isSupportedThemePreference(rootElement.dataset.themePreference)
+    ? rootElement.dataset.themePreference
     : "night");
 
-applyTheme(initialTheme);
+applyThemePreference(initialThemePreference);
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    const currentTheme = rootElement.dataset.theme;
-    const nextTheme = currentTheme === "night" ? "day" : "night";
+    const currentPreference =
+      rootElement.dataset.themePreference;
 
-    applyTheme(nextTheme);
-    saveTheme(nextTheme);
+    const nextPreference =
+      getNextThemePreference(currentPreference);
+
+    applyThemePreference(nextPreference);
+    saveThemePreference(nextPreference);
   });
+}
+
+const handleSystemThemeChange = () => {
+  if (rootElement.dataset.themePreference === "auto") {
+    applyThemePreference("auto");
+  }
+};
+
+if (systemThemeQuery) {
+  if (typeof systemThemeQuery.addEventListener === "function") {
+    systemThemeQuery.addEventListener("change", handleSystemThemeChange);
+  } else if (typeof systemThemeQuery.addListener === "function") {
+    systemThemeQuery.addListener(handleSystemThemeChange);
+  }
 }
 
 const menuIcon = document.querySelector("#menu-icon");

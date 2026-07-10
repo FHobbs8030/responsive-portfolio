@@ -41,7 +41,7 @@
 .theme-toggle {
   flex: 0 0 auto;
 
-  width: 5.8rem;
+  width: 6.8rem;
   height: 3.2rem;
 
   padding: 0.3rem;
@@ -87,17 +87,17 @@
   height: 100%;
 
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   align-items: center;
 }
 
 .theme-toggle__thumb {
   position: absolute;
-  top: 0;
+  top: 0.3rem;
   left: 0;
 
-  width: 2.4rem;
-  height: 2.4rem;
+  width: 2rem;
+  height: 2rem;
 
   border-radius: 50%;
 
@@ -120,7 +120,7 @@
   display: grid;
   place-items: center;
 
-  font-size: 1.5rem;
+  font-size: 1.35rem;
   line-height: 1;
 
   color: var(--color-text-muted);
@@ -128,13 +128,22 @@
   transition: color 0.25s ease;
 }
 
-html[data-theme="night"] .theme-toggle__icon--night,
-html[data-theme="day"] .theme-toggle__icon--day {
+html[data-theme-preference="night"] .theme-toggle__icon--night,
+html[data-theme-preference="auto"] .theme-toggle__icon--auto,
+html[data-theme-preference="day"] .theme-toggle__icon--day {
   color: var(--color-text-on-primary);
 }
 
-html[data-theme="day"] .theme-toggle__thumb {
-  left: calc(100% - 2.4rem);
+html[data-theme-preference="night"] .theme-toggle__thumb {
+  left: 0;
+}
+
+html[data-theme-preference="auto"] .theme-toggle__thumb {
+  left: calc(50% - 1rem);
+}
+
+html[data-theme-preference="day"] .theme-toggle__thumb {
+  left: calc(100% - 2rem);
 }
 
 /* =========================
