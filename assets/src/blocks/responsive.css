@@ -168,7 +168,7 @@
   #menu-icon span {
     width: 100%;
     height: 3px;
-    background: var(--main-color);
+    background: var(--color-primary);
     border-radius: 2px;
     transition: 0.3s ease;
   }
@@ -403,9 +403,9 @@
     width: clamp(150px, 48vw, 200px);
 
     box-shadow:
-      0 0 0 3px #ea580c,
-      0 0 14px rgba(234, 88, 12, 0.4),
-      0 0 30px rgba(234, 88, 12, 0.2);
+      0 0 0 3px var(--color-primary),
+      0 0 14px rgba(var(--color-primary-rgb), 0.4),
+      0 0 30px rgba(var(--color-primary-rgb), 0.2);
   }
 
   .about-image .image-wrapper::before {
