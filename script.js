@@ -146,7 +146,6 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 });
 
-const logo = document.querySelector(".logo");
 const heroImage = document.querySelector(".home-image .image-wrapper");
 
 function addTapEffect(element) {
