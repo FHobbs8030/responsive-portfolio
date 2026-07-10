@@ -1,3 +1,69 @@
+/* =========================
+   THEME ENGINE
+========================= */
+const THEME_STORAGE_KEY = "portfolio-theme";
+
+const rootElement = document.documentElement;
+const themeToggle = document.querySelector(".theme-toggle");
+
+const isSupportedTheme = (theme) => {
+  return theme === "night" || theme === "day";
+};
+
+const getSavedTheme = () => {
+  try {
+    const savedTheme = localStorage.getItem(THEME_STORAGE_KEY);
+
+    return isSupportedTheme(savedTheme) ? savedTheme : null;
+  } catch {
+    return null;
+  }
+};
+
+const saveTheme = (theme) => {
+  try {
+    localStorage.setItem(THEME_STORAGE_KEY, theme);
+  } catch {
+    // Theme switching still works when storage is unavailable.
+  }
+};
+
+const updateThemeToggle = (theme) => {
+  if (!themeToggle) return;
+
+  const isDayTheme = theme === "day";
+  const nextTheme = isDayTheme ? "night" : "day";
+
+  themeToggle.setAttribute("aria-pressed", String(isDayTheme));
+  themeToggle.setAttribute("aria-label", `Switch to ${nextTheme} mode`);
+  themeToggle.setAttribute("title", `Switch to ${nextTheme} mode`);
+};
+
+const applyTheme = (theme) => {
+  const resolvedTheme = isSupportedTheme(theme) ? theme : "night";
+
+  rootElement.dataset.theme = resolvedTheme;
+  updateThemeToggle(resolvedTheme);
+};
+
+const initialTheme =
+  getSavedTheme() ??
+  (isSupportedTheme(rootElement.dataset.theme)
+    ? rootElement.dataset.theme
+    : "night");
+
+applyTheme(initialTheme);
+
+if (themeToggle) {
+  themeToggle.addEventListener("click", () => {
+    const currentTheme = rootElement.dataset.theme;
+    const nextTheme = currentTheme === "night" ? "day" : "night";
+
+    applyTheme(nextTheme);
+    saveTheme(nextTheme);
+  });
+}
+
 const menuIcon = document.querySelector("#menu-icon");
 const logo = document.querySelector(".logo");
 const navbar = document.querySelector(".navbar");

@@ -3,6 +3,23 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <script>
+      (() => {
+        const storageKey = "portfolio-theme";
+
+        try {
+          const savedTheme = localStorage.getItem(storageKey);
+
+          if (savedTheme === "night" || savedTheme === "day") {
+            document.documentElement.dataset.theme = savedTheme;
+          }
+        } catch {
+          // Night remains the default when storage is unavailable.
+        }
+      })();
+    </script>
+
     <title>Fred Hobbs | Portfolio</title>
 
     <link
