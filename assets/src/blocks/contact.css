@@ -13,9 +13,9 @@
   position: relative;
   z-index: 1;
   isolation: isolate;
-  background: var(--bg-color);
+  background: var(--color-bg);
   padding: 0.1rem 1.5rem 5rem;
-  border-top: 1px solid rgba(255, 255, 255, 0.05);
+  border-top: 1px solid var(--color-border);
 
   display: flex;
   justify-content: center;
@@ -36,8 +36,8 @@
   z-index: -1;
 
   background:
-    radial-gradient(circle at 30% 80%, rgba(234, 88, 12, 0.18), transparent 55%),
-    radial-gradient(circle at 70% 100%, rgba(234, 88, 12, 0.12), transparent 60%);
+    radial-gradient(circle at 30% 80%, rgba(var(--color-primary-rgb), 0.18), transparent 55%),
+    radial-gradient(circle at 70% 100%, rgba(var(--color-primary-rgb), 0.12), transparent 60%);
 
   filter: blur(70px); /* 🔥 reduced from 100px */
   opacity: 0.9;
@@ -53,7 +53,7 @@
   width: 100%;
   height: 40px;
 
-  background: linear-gradient(to bottom, transparent, var(--bg-color));
+  background: linear-gradient(to bottom, transparent, var(--color-bg));
   z-index: 0;
   pointer-events: none;
 }
@@ -83,25 +83,25 @@
 
   background: linear-gradient(
     145deg,
-    rgba(20, 20, 20, 0.85),
-    rgba(8, 8, 8, 0.95)
+    rgba(var(--color-surface-form-rgb), 0.85),
+    rgba(var(--color-bg-rgb), 0.95)
   );
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(var(--color-text-rgb), 0.06);
 
   -webkit-backdrop-filter: blur(16px);
   backdrop-filter: blur(16px);
 
   box-shadow:
-    0 0 30px rgba(234, 88, 12, 0.08),
-    inset 0 0 25px rgba(255, 255, 255, 0.02);
+    0 0 30px rgba(var(--color-primary-rgb), 0.08),
+    inset 0 0 25px rgba(var(--color-text-rgb), 0.02);
 
   transition: box-shadow 0.3s ease;
 }
 
 .contact form:hover {
   box-shadow:
-    0 0 40px rgba(234, 88, 12, 0.15),
-    inset 0 0 25px rgba(255, 255, 255, 0.03);
+    0 0 40px rgba(var(--color-primary-rgb), 0.15),
+    inset 0 0 25px rgba(var(--color-text-rgb), 0.03);
 }
 
 /* contained inner glow */
@@ -112,8 +112,8 @@
   z-index: -1;
 
   background:
-    radial-gradient(circle at 20% 30%, rgba(234, 88, 12, 0.1), transparent 50%),
-    radial-gradient(circle at 80% 70%, rgba(234, 88, 12, 0.08), transparent 55%);
+    radial-gradient(circle at 20% 30%, rgba(var(--color-primary-rgb), 0.1), transparent 50%),
+    radial-gradient(circle at 80% 70%, rgba(var(--color-primary-rgb), 0.08), transparent 55%);
 
   filter: blur(60px);
 }
@@ -128,7 +128,7 @@
   background: linear-gradient(
     120deg,
     transparent,
-    rgba(234, 88, 12, 0.4),
+    rgba(var(--color-primary-rgb), 0.4),
     transparent
   );
 
@@ -146,13 +146,13 @@
 
 .input-group label {
   font-size: 1.3rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--color-text-subtle);
   transition: all 0.25s ease;
 }
 
 .input-group:focus-within label {
-  color: var(--main-color);
-  text-shadow: 0 0 8px rgba(234, 88, 12, 0.4);
+  color: var(--color-primary);
+  text-shadow: 0 0 8px rgba(var(--color-primary-rgb), 0.4);
 }
 
 /* ================= ROW LAYOUT ================= */
@@ -175,15 +175,15 @@
   padding: 1rem;
 
   border-radius: 0.8rem;
-  border: 1px solid rgba(255, 255, 255, 0.12);
+  border: 1px solid var(--color-border-strong);
 
   background: linear-gradient(
     145deg,
-    rgba(15, 15, 15, 0.95),
-    rgba(5, 5, 5, 0.95)
+    rgba(var(--color-surface-input-rgb), 0.95),
+    rgba(var(--color-surface-deep-rgb), 0.95)
   );
 
-  color: white;
+  color: var(--color-text);
   font-size: 1.4rem;
 
   transition:
@@ -194,16 +194,16 @@
 
 .input-group input::placeholder,
 .input-group textarea::placeholder {
-  color: rgba(255, 255, 255, 0.35);
+  color: var(--color-text-disabled);
 }
 
 .input-group input:focus,
 .input-group textarea:focus {
-  border-color: var(--main-color);
+  border-color: var(--color-primary);
 
   box-shadow:
-    0 0 10px rgba(234, 88, 12, 0.25),
-    0 0 25px rgba(234, 88, 12, 0.15);
+    0 0 10px rgba(var(--color-primary-rgb), 0.25),
+    0 0 25px rgba(var(--color-primary-rgb), 0.15);
 
   transform: translateY(-1px);
   outline: none;
@@ -223,9 +223,13 @@ textarea {
   padding: 1.2rem 2.5rem;
   border-radius: 999px;
 
-  background: linear-gradient(135deg, #ea580c, #ff6a1a);
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-hover)
+  );
 
-  color: black;
+  color: var(--color-text-on-primary);
   font-size: 1.5rem;
   font-weight: 600;
 
@@ -239,8 +243,8 @@ textarea {
   transform: translateY(-2px);
 
   box-shadow:
-    0 0 20px var(--main-color),
-    0 0 40px var(--main-color);
+    0 0 20px var(--color-primary),
+    0 0 40px var(--color-primary);
 }
 
 /* ================= STATUS ================= */
@@ -248,14 +252,14 @@ textarea {
 .form-status {
   margin-top: 1rem;
   font-size: 1.4rem;
-  color: #ff5a00;
+  color: var(--color-status-default);
   text-align: center;
 }
 
 .form-status.success {
-  color: #22c55e;
+  color: var(--color-success);
 }
 
 .form-status.error {
-  color: #ef4444;
+  color: var(--color-error);
 }

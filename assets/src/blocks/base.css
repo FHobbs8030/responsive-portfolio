@@ -36,12 +36,16 @@ body {
   ========================= */
 
   --color-bg: #080808;
+  --color-bg-rgb: 8, 8, 8;
   --color-surface: #101010;
   --color-surface-alt: #0a0a0a;
   --color-surface-alt-rgb: 10, 10, 10;
 
   --color-card: #111111;
   --color-surface-warm-rgb: 35, 12, 4;
+  --color-surface-form-rgb: 20, 20, 20;
+  --color-surface-input-rgb: 15, 15, 15;
+  --color-surface-deep-rgb: 5, 5, 5;
   --color-surface-glass: rgba(10, 10, 10, 0.85);
   --color-shadow-rgb: 0, 0, 0;
   --color-shadow-strong: rgba(var(--color-shadow-rgb), 0.7);
@@ -68,6 +72,7 @@ body {
   --color-shine: rgba(255, 255, 255, 0.35);
   --color-shine-soft: rgba(255, 255, 255, 0.25);
 
+  --color-status-default: #ff5a00;
   --color-success: #22c55e;
   --color-error: #ef4444;
 
