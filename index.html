@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en" data-theme="night">
+<html lang="en" data-theme="night" data-theme-preference="night">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -7,16 +7,35 @@
     <script>
       (() => {
         const storageKey = "portfolio-theme";
+        const supportedPreferences = ["night", "auto", "day"];
+
+        let preference = "night";
 
         try {
-          const savedTheme = localStorage.getItem(storageKey);
+          const savedPreference = localStorage.getItem(storageKey);
 
-          if (savedTheme === "night" || savedTheme === "day") {
-            document.documentElement.dataset.theme = savedTheme;
+          if (supportedPreferences.includes(savedPreference)) {
+            preference = savedPreference;
           }
         } catch {
           // Night remains the default when storage is unavailable.
         }
+
+        let resolvedTheme = preference;
+
+        if (preference === "auto") {
+          if (typeof window.matchMedia === "function") {
+            resolvedTheme = window.matchMedia("(prefers-color-scheme: dark)")
+              .matches
+              ? "night"
+              : "day";
+          } else {
+            resolvedTheme = "night";
+          }
+        }
+
+        document.documentElement.dataset.themePreference = preference;
+        document.documentElement.dataset.theme = resolvedTheme;
       })();
     </script>
 
@@ -56,12 +75,16 @@
           <button
             class="theme-toggle"
             type="button"
-            aria-label="Switch to day mode"
-            aria-pressed="false"
+            aria-label="Theme preference: night. Switch to auto mode"
+            title="Switch to auto mode"
           >
             <span class="theme-toggle__track" aria-hidden="true">
               <i
                 class="bx bx-moon theme-toggle__icon theme-toggle__icon--night"
+              ></i>
+
+              <i
+                class="bx bx-desktop theme-toggle__icon theme-toggle__icon--auto"
               ></i>
 
               <i
