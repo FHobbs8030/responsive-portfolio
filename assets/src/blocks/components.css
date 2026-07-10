@@ -1,60 +1,66 @@
-/* ================= HEADER CTA ================= */
-.header-btn::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  opacity: 0.7;
-
-  background: linear-gradient(
-    120deg,
-    transparent 30%,
-    rgba(255, 255, 255, 0.35),
-    transparent 70%
-  );
-
-  transform: skewX(-25deg);
-  transition: left 0.45s ease; /* faster + smoother */
-
-  z-index: 2;
-  pointer-events: none;
-}
+/* =========================
+   HEADER CTA BUTTON
+========================= */
 
 .header-btn {
   position: relative;
-  z-index: 1;
   isolation: isolate;
   overflow: hidden;
-  padding: 0.6rem 1.6rem;
-  border-radius: 999px;
-  background: linear-gradient(135deg, #ea580c, #ff6a1a);
-  color: black;
-  font-size: 1.3rem;
-  font-weight: 600;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
+  padding: var(--space-sm) var(--space-lg);
+
+  border-radius: var(--radius-round);
+
+  background: linear-gradient(135deg, var(--color-primary), var(--color-primary-hover));
+  color: var(--color-text-on-primary);
+
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
+
+  z-index: 1;
+
   transform: translateZ(0);
   will-change: transform, box-shadow;
 
   box-shadow:
-    0 0 12px rgba(234, 88, 12, 0.5),
-    0 0 25px rgba(234, 88, 12, 0.25);
+    var(--glow-sm),
+    var(--glow-md);
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+    transform .25s ease,
+    box-shadow .25s ease,
+    filter .25s ease;
 
   animation: headerGlow 3.5s ease-in-out infinite;
-  transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    filter 0.25s ease;
+}
+
+.header-btn::before {
+  content: "";
+
+  position: absolute;
+  inset: 0;
+  left: -100%;
+
+  background: linear-gradient(
+    120deg,
+    transparent 30%,
+    var(--color-shine),
+    transparent 70%
+  );
+
+  transform: skewX(-25deg);
+
+  opacity: .7;
+
+  transition: left .45s ease;
+
+  pointer-events: none;
+
+  z-index: 2;
 }
 
 .header-btn:hover::before {
@@ -63,81 +69,99 @@
 }
 
 .header-btn:hover {
-  transform: translateY(-3px) scale(1.06);
+  transform: translateY(-3px) scale(1.05);
 
   box-shadow:
-    0 0 20px var(--glow-core),
-    0 0 50px var(--glow-mid),
-    0 0 100px var(--glow-soft),
-    0 10px 30px rgba(0, 0, 0, 0.7);
+    var(--ring),
+    var(--glow-md),
+    var(--glow-lg),
+    var(--shadow-md);
 
-  filter: brightness(1.1);
+  filter: brightness(1.08);
+
   animation: headerGlow 1.2s ease-in-out infinite;
 }
 
-/* ================= BUTTON SYSTEM ================= */
+/* =========================
+   GLOBAL BUTTON SYSTEM
+========================= */
 
 .btn {
-  padding: 0.8rem 1.8rem;
-  border-radius: 999px;
-  font-size: 1.3rem;
-  font-weight: 600;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
+
+  padding: var(--space-sm) var(--space-lg);
+
+  border-radius: var(--radius-round);
+
+  font-size: var(--fs-base);
+  font-weight: var(--fw-semibold);
 
   cursor: pointer;
   text-decoration: none;
 
   transition:
-    transform 0.25s ease,
-    box-shadow 0.25s ease,
-    background 0.25s ease,
-    color 0.25s ease;
+    transform .25s ease,
+    box-shadow .25s ease,
+    background .25s ease,
+    color .25s ease;
 }
 
 .btn-primary {
-  background: linear-gradient(135deg, #ea580c, #ff6a1a);
-  color: black;
+  background: linear-gradient(
+    135deg,
+    var(--color-primary),
+    var(--color-primary-hover)
+  );
+
+  color: var(--color-text-on-primary);
 
   box-shadow:
-    0 0 12px rgba(234, 88, 12, 0.4),
-    0 0 25px rgba(234, 88, 12, 0.2);
+    var(--glow-sm),
+    var(--glow-md);
 }
 
 .btn-outline {
-  border: 1px solid var(--main-color);
-  color: var(--main-color);
+  border: 1px solid var(--color-primary);
+
   background: transparent;
+
+  color: var(--color-primary);
 }
 
 .btn:hover:not(.header-btn) {
-  transform: translateY(-2px) scale(1.05);
+  transform: translateY(-2px) scale(1.04);
 
   box-shadow:
-    0 0 18px var(--glow-core),
-    0 0 40px var(--glow-mid),
-    0 0 70px var(--glow-soft);
+    var(--ring),
+    var(--glow-md),
+    var(--glow-lg);
 }
 
 .btn-outline:hover {
-  background: var(--main-color);
-  color: black;
+  background: var(--color-primary);
+  color: var(--color-text-on-primary);
 }
 
-/* ================= ANIMATION ================= */
+/* =========================
+   BUTTON ANIMATION
+========================= */
 
 @keyframes headerGlow {
+
   0%,
   100% {
+
     box-shadow:
-      0 0 12px rgba(234, 88, 12, 0.4),
-      0 0 25px rgba(234, 88, 12, 0.2);
+      var(--glow-sm),
+      var(--glow-md);
   }
+
   50% {
+
     box-shadow:
-      0 0 16px rgba(234, 88, 12, 0.55),
-      0 0 35px rgba(234, 88, 12, 0.25);
+      var(--glow-md),
+      var(--glow-lg);
   }
 }
