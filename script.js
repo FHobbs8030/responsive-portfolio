@@ -20,9 +20,7 @@ const getSavedThemePreference = () => {
   try {
     const savedPreference = localStorage.getItem(THEME_STORAGE_KEY);
 
-    return isSupportedThemePreference(savedPreference)
-      ? savedPreference
-      : null;
+    return isSupportedThemePreference(savedPreference) ? savedPreference : null;
   } catch {
     return null;
   }
@@ -63,10 +61,7 @@ const updateThemeToggle = (preference, resolvedTheme) => {
     `Theme preference: ${preference}. Current theme: ${resolvedTheme}. Switch to ${nextPreference} mode`,
   );
 
-  themeToggle.setAttribute(
-    "title",
-    `Switch to ${nextPreference} mode`,
-  );
+  themeToggle.setAttribute("title", `Switch to ${nextPreference} mode`);
 };
 
 const applyThemePreference = (preference) => {
@@ -92,11 +87,9 @@ applyThemePreference(initialThemePreference);
 
 if (themeToggle) {
   themeToggle.addEventListener("click", () => {
-    const currentPreference =
-      rootElement.dataset.themePreference;
+    const currentPreference = rootElement.dataset.themePreference;
 
-    const nextPreference =
-      getNextThemePreference(currentPreference);
+    const nextPreference = getNextThemePreference(currentPreference);
 
     applyThemePreference(nextPreference);
     saveThemePreference(nextPreference);
@@ -123,34 +116,54 @@ const navbar = document.querySelector(".navbar");
 const navLinks = document.querySelectorAll("header nav a");
 const sections = document.querySelectorAll("section");
 
+const isMenuOpen = () => {
+  return Boolean(navbar?.classList.contains("active"));
+};
+
+const setMenuState = (isOpen) => {
+  if (!navbar || !menuIcon) return;
+
+  navbar.classList.toggle("active", isOpen);
+  menuIcon.classList.toggle("active", isOpen);
+
+  menuIcon.setAttribute("aria-expanded", String(isOpen));
+  menuIcon.setAttribute(
+    "aria-label",
+    isOpen ? "Close navigation menu" : "Open navigation menu",
+  );
+
+  document.body.style.overflow = isOpen ? "hidden" : "";
+};
+
+const closeMenu = ({ returnFocus = false } = {}) => {
+  if (!navbar || !menuIcon) return;
+
+  setMenuState(false);
+
+  if (returnFocus) {
+    menuIcon.focus();
+  }
+};
+
 if (menuIcon && navbar) {
-  menuIcon.addEventListener("click", (e) => {
-    e.stopPropagation();
+  menuIcon.addEventListener("click", (event) => {
+    event.stopPropagation();
 
-    navbar.classList.toggle("active");
-    menuIcon.classList.toggle("active");
-
-    document.body.style.overflow = navbar.classList.contains("active")
-      ? "hidden"
-      : "";
+    setMenuState(!isMenuOpen());
   });
 }
-
-const closeMenu = () => {
-  if (!navbar || !menuIcon) return;
-  navbar.classList.remove("active");
-  menuIcon.classList.remove("active");
-  document.body.style.overflow = "";
-};
 
 if (logo) {
   logo.addEventListener("click", () => {
     closeMenu();
 
-    navLinks.forEach((l) => l.classList.remove("active"));
+    navLinks.forEach((link) => link.classList.remove("active"));
 
     const homeLink = document.querySelector('header nav a[href="#home"]');
-    if (homeLink) homeLink.classList.add("active");
+
+    if (homeLink) {
+      homeLink.classList.add("active");
+    }
   });
 }
 
@@ -158,28 +171,53 @@ navLinks.forEach((link) => {
   link.addEventListener("click", function () {
     closeMenu();
 
-    navLinks.forEach((l) => l.classList.remove("active"));
+    navLinks.forEach((navLink) => {
+      navLink.classList.remove("active");
+    });
+
     this.classList.add("active");
   });
 });
 
-document.addEventListener("click", (e) => {
+document.addEventListener("click", (event) => {
   if (
     navbar &&
     menuIcon &&
-    navbar.classList.contains("active") &&
-    !navbar.contains(e.target) &&
-    !menuIcon.contains(e.target)
+    isMenuOpen() &&
+    !navbar.contains(event.target) &&
+    !menuIcon.contains(event.target)
   ) {
     closeMenu();
   }
 });
 
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && isMenuOpen()) {
+    event.preventDefault();
+
+    closeMenu({ returnFocus: true });
+  }
+});
+
 window.addEventListener("scroll", () => {
-  if (navbar && navbar.classList.contains("active")) {
+  if (isMenuOpen()) {
     closeMenu();
   }
 });
+
+const desktopViewportQuery = window.matchMedia("(min-width: 769px)");
+
+const handleDesktopViewportChange = (event) => {
+  if (event.matches && isMenuOpen()) {
+    closeMenu();
+  }
+};
+
+if (typeof desktopViewportQuery.addEventListener === "function") {
+  desktopViewportQuery.addEventListener("change", handleDesktopViewportChange);
+} else if (typeof desktopViewportQuery.addListener === "function") {
+  desktopViewportQuery.addListener(handleDesktopViewportChange);
+}
 
 const navObserver = new IntersectionObserver(
   (entries) => {

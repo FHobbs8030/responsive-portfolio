@@ -190,21 +190,41 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    align-items: center;
     gap: 5px;
 
-    width: 26px;
-    height: 20px;
+    width: 32px;
+    height: 32px;
+
+    padding: 3px;
+
+    appearance: none;
+    border: 0;
+    border-radius: var(--radius-sm);
+
+    background: transparent;
+    color: inherit;
+
+    font: inherit;
 
     cursor: pointer;
+    touch-action: manipulation;
+
     z-index: 1002;
   }
 
   #menu-icon span {
-    width: 100%;
+    width: 26px;
     height: 3px;
     background: var(--color-primary);
     border-radius: 2px;
     transition: 0.3s ease;
+  }
+
+  #menu-icon:focus-visible {
+    outline: none;
+
+    box-shadow: var(--ring), var(--glow-sm);
   }
 
   #menu-icon.active span:nth-child(1) {
@@ -579,10 +599,10 @@
     padding-inline: 1rem;
   }
 
- .header {
-  padding-inline: 0.6rem;
-  padding-block: 0.5rem;
-}
+  .header {
+    padding-inline: 0.6rem;
+    padding-block: 0.5rem;
+  }
 
   .logo {
     transform: scale(0.9);
