@@ -35,7 +35,7 @@
   width: 100%;
   max-width: 1400px;
 
-  min-height: clamp(56rem, 78vh, 72rem);
+  min-height: clamp(50rem, 70vh, 64rem);
 
   margin: 0 auto;
 
