@@ -7,10 +7,12 @@
   min-height: unset;
 
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 
-  padding-block: clamp(6rem, 9vw, 10rem);
+  padding: clamp(4rem, 5vw, 6rem) 2rem;
+
+  scroll-margin-top: var(--header-height);
 
   overflow: visible;
   isolation: isolate;

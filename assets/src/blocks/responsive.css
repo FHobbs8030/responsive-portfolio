@@ -278,13 +278,17 @@
 
   #about {
     min-height: unset;
+    padding: 3rem 1.5rem 4rem;
+
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 
   .about-container {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    gap: 2.5rem;
+    gap: 2rem;
   }
 
   .about-content {
@@ -326,6 +330,53 @@
     grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 1.2rem;
   }
+
+  #services {
+  min-height: unset;
+
+  padding: 3rem 1.5rem 4rem;
+}
+
+.services-container {
+  width: 100%;
+
+  padding-inline: 0;
+}
+
+.services-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  width: 100%;
+  max-width: 72rem;
+
+  margin-inline: auto;
+
+  gap: 1.4rem;
+}
+
+.service-box {
+  min-height: 18rem;
+
+  padding: 2.4rem;
+}
+
+.service-box:last-child {
+  grid-column: 1 / -1;
+
+  width: 100%;
+  max-width: calc(50% - 0.7rem);
+
+  justify-self: center;
+}
+
+.service-box h3 {
+  font-size: var(--fs-md);
+}
+
+.service-box p {
+  font-size: var(--fs-sm);
+  line-height: 1.65;
+}
 }
 
 /* =========================
@@ -458,10 +509,16 @@
      ABOUT SPECIFIC
   ========================= */
   #about {
-    padding-top: var(--header-height);
+    padding: 2.5rem 1.5rem 4rem;
 
     align-items: flex-start;
     justify-content: flex-start;
+  }
+
+  .about-container {
+    padding-top: 0;
+
+    gap: 1.8rem;
   }
 
   .about-image .image-wrapper {
@@ -518,40 +575,47 @@
   /* =========================
    SERVICES
 ========================= */
-  #services {
-    min-height: unset;
-    padding: 4rem 1.2rem;
-  }
+ #services {
+  min-height: unset;
 
-  .services-container {
-    padding-inline: 0;
-  }
+  padding: 2.5rem 1.2rem 3.5rem;
+}
 
-  .services-grid {
-    grid-template-columns: 1fr;
+.services-container {
+  padding-inline: 0;
+}
 
-    width: 100%;
-    max-width: 42rem;
+.services-grid {
+  grid-template-columns: 1fr;
 
-    margin-inline: auto;
+  width: 100%;
+  max-width: 42rem;
 
-    gap: 1.2rem;
-  }
+  margin-inline: auto;
 
-  .service-box {
-    width: 100%;
+  gap: 1.2rem;
+}
 
-    padding: var(--space-xl);
-  }
+.service-box,
+.service-box:last-child {
+  grid-column: auto;
 
-  .service-box h3 {
-    font-size: var(--fs-md);
-  }
+  width: 100%;
+  max-width: none;
 
-  .service-box p {
-    font-size: var(--fs-base);
-    line-height: 1.65;
-  }
+  min-height: auto;
+
+  padding: 2.4rem;
+}
+
+.service-box h3 {
+  font-size: var(--fs-md);
+}
+
+.service-box p {
+  font-size: var(--fs-base);
+  line-height: 1.65;
+}
 
   /* =========================
    PROJECTS
@@ -692,13 +756,13 @@
   }
 
   .home-content p {
-  max-width: 34ch;
+    max-width: 34ch;
 
-  margin-inline: auto;
+    margin-inline: auto;
 
-  font-size: var(--fs-base);
-  line-height: 1.65;
-}
+    font-size: var(--fs-base);
+    line-height: 1.65;
+  }
 
   .hero-social {
     margin-top: 0.5rem;
@@ -725,7 +789,7 @@
   }
 
   .about-content p {
-  font-size: var(--fs-base);
-  line-height: 1.65;
-}
+    font-size: var(--fs-base);
+    line-height: 1.65;
+  }
 }
