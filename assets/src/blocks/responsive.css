@@ -542,20 +542,6 @@
 
   .about-image .image-wrapper {
     width: clamp(150px, 48vw, 200px);
-
-    box-shadow:
-      0 0 0 3px var(--color-primary),
-      0 0 14px rgba(var(--color-primary-rgb), 0.4),
-      0 0 30px rgba(var(--color-primary-rgb), 0.2);
-  }
-
-  .about-image .image-wrapper::before {
-    inset: -10px;
-
-    -webkit-filter: blur(12px);
-    filter: blur(12px);
-
-    opacity: 0.6;
   }
 
   .about-content {
