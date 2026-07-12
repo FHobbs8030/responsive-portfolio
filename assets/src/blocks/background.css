@@ -3,8 +3,8 @@
 ========================= */
 
 :root {
-  --portfolio-bg-desktop: url("../../images/portfolio-bg-desktop.png");
-  --portfolio-bg-mobile: url("../../images/portfolio-bg-mobile.png");
+  --portfolio-bg-desktop: url("../../images/portfolio-bg-desktop.webp");
+  --portfolio-bg-mobile: url("../../images/portfolio-bg-mobile.webp");
 
   --portfolio-bg-image: var(--portfolio-bg-desktop);
 }
@@ -32,11 +32,7 @@ html:not([data-theme="day"]) body::before {
   pointer-events: none;
 
   background-image:
-    linear-gradient(
-      180deg,
-      rgba(8, 8, 8, 0.16),
-      rgba(8, 8, 8, 0.34)
-    ),
+    linear-gradient(180deg, rgba(8, 8, 8, 0.16), rgba(8, 8, 8, 0.34)),
     var(--portfolio-bg-image);
 
   background-position: center;
@@ -75,11 +71,7 @@ html:not([data-theme="day"]) section:nth-child(even) {
 
 /* Prevent the Home section from fading into solid black. */
 html:not([data-theme="day"]) .home::after {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(8, 8, 8, 0.08)
-  );
+  background: linear-gradient(to bottom, transparent, rgba(8, 8, 8, 0.08));
 }
 
 /* Remove the dark Services top band. */
@@ -122,11 +114,7 @@ html[data-theme="day"] body::before {
 
   html:not([data-theme="day"]) body::before {
     background-image:
-      linear-gradient(
-        180deg,
-        rgba(8, 8, 8, 0.2),
-        rgba(8, 8, 8, 0.38)
-      ),
+      linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.38)),
       var(--portfolio-bg-image);
 
     background-position: center;
