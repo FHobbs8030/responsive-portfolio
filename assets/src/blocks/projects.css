@@ -89,6 +89,45 @@
 }
 
 /* =========================
+   PROJECT CARD GLOW SYSTEM
+========================= */
+.project-card {
+  position: relative;
+  border-radius: 20px;
+  background: var(--color-surface-alt);
+  z-index: 1;
+
+  transition:
+    transform 0.35s ease,
+    box-shadow 0.35s ease;
+
+  box-shadow: 0 0 0 1px var(--color-border);
+}
+
+.project-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--ring), var(--glow-md), var(--glow-lg);
+}
+
+.project-card::before {
+  content: "";
+  position: absolute;
+  inset: -12px;
+  border-radius: 24px;
+
+  background: radial-gradient(circle, var(--glow-halo), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.35s ease;
+
+  filter: blur(14px);
+  z-index: -1;
+}
+
+.project-card:hover::before {
+  opacity: 1;
+}
+
+/* =========================
    PROJECT CARD
 ========================= */
 .project-card {
