@@ -1,0 +1,134 @@
+/* =========================
+   PORTFOLIO BACKGROUND SYSTEM
+========================= */
+
+:root {
+  --portfolio-bg-desktop: url("../../images/portfolio-bg-desktop.png");
+  --portfolio-bg-mobile: url("../../images/portfolio-bg-mobile.png");
+
+  --portfolio-bg-image: var(--portfolio-bg-desktop);
+}
+
+/* =========================
+   CONTINUOUS NIGHT BACKGROUND
+========================= */
+
+body {
+  position: relative;
+}
+
+/*
+  One fixed background layer is shared by every section.
+  This prevents a new crop from appearing at each section boundary.
+*/
+html:not([data-theme="day"]) body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(8, 8, 8, 0.16),
+      rgba(8, 8, 8, 0.34)
+    ),
+    var(--portfolio-bg-image);
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Keep the page content above the fixed background layer. */
+#main-content,
+footer {
+  position: relative;
+  z-index: 1;
+}
+
+/* =========================
+   TRANSPARENT SECTIONS
+========================= */
+
+html:not([data-theme="day"])
+  :is(#home, #about, #services, #projects, #contact) {
+  background-color: transparent;
+  background-image: none;
+}
+
+/*
+  Remove the alternating solid section background inherited
+  from the global section system.
+*/
+html:not([data-theme="day"]) section:nth-child(even) {
+  background-color: transparent;
+}
+
+/* =========================
+   SECTION TRANSITIONS
+========================= */
+
+/* Prevent the Home section from fading into solid black. */
+html:not([data-theme="day"]) .home::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(8, 8, 8, 0.08)
+  );
+}
+
+/* Remove the dark Services top band. */
+html:not([data-theme="day"]) #services::before {
+  content: none;
+}
+
+/*
+  Preserve a subtle divider without introducing a new
+  background color or image crop.
+*/
+html:not([data-theme="day"])
+  :is(#home, #about, #services, #projects, #contact)::after {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--color-primary-rgb), 0.12),
+    transparent
+  );
+}
+
+/* =========================
+   DAY THEME
+========================= */
+
+html[data-theme="day"] body::before {
+  content: none;
+}
+
+/* Day mode continues using the original section backgrounds. */
+
+/* =========================
+   MOBILE BACKGROUND
+========================= */
+
+@media (max-width: 768px) {
+  :root {
+    --portfolio-bg-image: var(--portfolio-bg-mobile);
+  }
+
+  html:not([data-theme="day"]) body::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(8, 8, 8, 0.2),
+        rgba(8, 8, 8, 0.38)
+      ),
+      var(--portfolio-bg-image);
+
+    background-position: center;
+  }
+}
