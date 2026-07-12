@@ -156,8 +156,11 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   max-width: 680px;
   min-width: 0;
+
+  padding-top: 0.75rem;
 }
 
 .about-content .heading {

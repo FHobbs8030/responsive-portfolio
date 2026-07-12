@@ -392,10 +392,9 @@ section::after {
 }
 
 /* =========================
-   HOME / ABOUT SHARED SECTION BASE
+   HOME SECTION FOUNDATION
 ========================= */
-#home,
-#about {
+#home {
   min-height: 100vh;
 
   display: flex;
@@ -432,86 +431,6 @@ section::after {
 
 .home-socials {
   gap: var(--space-xs);
-}
-
-/* =========================
-   ABOUT LAYOUT
-========================= */
-.about-container {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  gap: clamp(1.5rem, 2vw, 3rem);
-
-  width: 100%;
-  max-width: 1200px;
-
-  margin-inline: auto;
-}
-
-.about-content {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-
-  max-width: 680px;
-  min-width: 0;
-
-  padding-top: 0.75rem;
-}
-
-.about-content > * {
-  margin-bottom: 0;
-}
-
-.about-content .heading {
-  font-size: clamp(2.4rem, 3vw, 3rem);
-  font-weight: 600;
-
-  margin-bottom: 0.6rem;
-}
-
-.about-content .heading::after {
-  content: "";
-
-  width: 60px;
-  height: 2px;
-
-  display: block;
-  margin-top: 0.7rem;
-
-  background: var(--color-primary);
-  box-shadow: var(--glow-sm);
-}
-
-.about-content .heading span {
-  color: var(--color-primary);
-}
-
-.about-content p {
-  font-size: clamp(1.08rem, 1.2vw, 1.22rem);
-  line-height: 1.75;
-
-  max-width: 58ch;
-
-  color: var(--color-text-muted);
-}
-
-.about-content p + p {
-  margin-top: 1.2rem;
-}
-
-.about-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-
-  margin-top: 1rem;
-  margin-bottom: 1.4rem;
-
-  max-width: 100%;
-  min-width: 0;
 }
 
 /* =========================
