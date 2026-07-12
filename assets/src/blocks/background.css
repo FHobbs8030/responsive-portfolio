@@ -1,0 +1,204 @@
+/* =========================
+   PORTFOLIO BACKGROUND SYSTEM
+========================= */
+
+:root {
+  /* Night artwork */
+  --portfolio-bg-night-desktop: url("../../images/portfolio-bg-desktop.webp");
+  --portfolio-bg-night-mobile: url("../../images/portfolio-bg-mobile.webp");
+
+  /* Day artwork */
+  --portfolio-bg-day-desktop: url("../../images/portfolio-bg-day-desktop.webp");
+  --portfolio-bg-day-mobile: url("../../images/portfolio-bg-day-mobile.webp");
+
+  /* Default artwork */
+  --portfolio-bg-image: var(--portfolio-bg-night-desktop);
+}
+
+/* Switch the artwork when Day mode is active. */
+html[data-theme="day"] {
+  --portfolio-bg-image: var(--portfolio-bg-day-desktop);
+
+  --color-primary: #d14a0a;
+  --color-primary-hover: #b83b08;
+  --color-primary-highlight: #ff6a1a;
+  --color-primary-dark: #9a3412;
+  --color-primary-rgb: 209, 74, 10;
+
+  --color-border: rgba(var(--color-text-rgb), 0.1);
+  --color-border-strong: rgba(var(--color-text-rgb), 0.18);
+  --color-border-primary: rgba(var(--color-primary-rgb), 0.5);
+
+  --color-status-default: #ea580c;
+}
+
+/* =========================
+   PAGE BACKGROUND FOUNDATION
+========================= */
+
+body {
+  position: relative;
+}
+
+/*
+  One fixed background layer is shared by every section.
+  This prevents separate image crops at section boundaries.
+*/
+body::before {
+  content: "";
+
+  position: fixed;
+  inset: 0;
+
+  z-index: 0;
+
+  pointer-events: none;
+
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* =========================
+   NIGHT BACKGROUND
+========================= */
+
+html:not([data-theme="day"]) body::before {
+  background-image:
+    linear-gradient(180deg, rgba(8, 8, 8, 0.16), rgba(8, 8, 8, 0.34)),
+    var(--portfolio-bg-image);
+}
+
+/* =========================
+   DAY BACKGROUND
+========================= */
+
+/*
+  A soft gray-blue overlay reduces brightness while preserving
+  the champagne and amber details in the Day artwork.
+*/
+html[data-theme="day"] body::before {
+  background-image:
+    linear-gradient(
+      180deg,
+      rgba(239, 235, 228, 0.04),
+      rgba(175, 181, 187, 0.12)
+    ),
+    var(--portfolio-bg-image);
+
+  filter: saturate(1.08) contrast(1.08) brightness(0.96);
+}
+
+/* Keep all page content above the fixed artwork. */
+#main-content,
+footer {
+  position: relative;
+
+  z-index: 1;
+}
+
+/* =========================
+   DAY SECTION RESET
+========================= */
+
+html[data-theme="day"]
+  :is(#home, #about, #services, #projects, #contact)::before {
+  background: transparent;
+}
+
+/* =========================
+   TRANSPARENT SECTIONS
+========================= */
+
+/*
+  Remove section-specific solid backgrounds so both themes
+  can use their continuous background artwork.
+*/
+html :is(#home, #about, #services, #projects, #contact) {
+  background-color: transparent;
+  background-image: none;
+}
+
+/* Remove alternating solid section backgrounds. */
+html section:nth-child(even) {
+  background-color: transparent;
+}
+
+/* =========================
+   SECTION TRANSITIONS
+========================= */
+
+/* Prevent the Home section from fading into solid black. */
+html:not([data-theme="day"]) .home::after {
+  background: linear-gradient(to bottom, transparent, rgba(8, 8, 8, 0.08));
+}
+
+/* Use a soft neutral transition in Day mode. */
+html[data-theme="day"] .home::after {
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    rgba(194, 201, 208, 0.12)
+  );
+}
+
+/* Remove the Services stylesheet's dark top band. */
+html #services::before {
+  content: none;
+}
+
+/* Night section divider. */
+html:not([data-theme="day"])
+  :is(#home, #about, #services, #projects, #contact)::after {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--color-primary-rgb), 0.12),
+    transparent
+  );
+}
+
+/* Day section divider. */
+html[data-theme="day"]
+  :is(#home, #about, #services, #projects, #contact)::after {
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(var(--color-primary-rgb), 0.18),
+    transparent
+  );
+}
+
+/* =========================
+   MOBILE BACKGROUNDS
+========================= */
+
+@media (max-width: 768px) {
+  :root {
+    --portfolio-bg-image: var(--portfolio-bg-night-mobile);
+  }
+
+  html[data-theme="day"] {
+    --portfolio-bg-image: var(--portfolio-bg-day-mobile);
+  }
+
+  html:not([data-theme="day"]) body::before {
+    background-image:
+      linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.38)),
+      var(--portfolio-bg-image);
+
+    background-position: center;
+  }
+
+  html[data-theme="day"] body::before {
+    background-image:
+      linear-gradient(
+        180deg,
+        rgba(239, 235, 228, 0.06),
+        rgba(175, 181, 187, 0.15)
+      ),
+      var(--portfolio-bg-image);
+
+    background-position: center;
+  }
+}
