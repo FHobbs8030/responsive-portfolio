@@ -23,7 +23,7 @@
   left: 0;
 
   width: 100%;
-  height: 120px;
+  height: clamp(64px, 7vw, 90px);
 
   background: linear-gradient(to bottom, transparent, var(--color-surface-alt));
 }
@@ -65,26 +65,33 @@
 }
 
 .hero-tag {
-  font-size: var(--fs-sm);
-  font-weight: var(--fw-medium);
+  font-size: var(--fs-xs);
+  font-weight: var(--fw-semibold);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
   color: var(--color-primary);
 }
 
 .home-content h1 {
-  max-width: 650px;
+  max-width: 19ch;
 
-  font-size: clamp(2.6rem, 4vw, 4.2rem);
-  line-height: 1.1;
+  font-size: clamp(3.2rem, 3.5vw, 4.8rem);
+  line-height: 1.08;
+  letter-spacing: -0.025em;
+
+  text-wrap: balance;
 }
 
 .home-content p {
-  max-width: 56ch;
+  max-width: 52ch;
 
   font-size: var(--fs-base);
-  line-height: 1.65;
+  line-height: 1.7;
 
   color: var(--color-text-muted);
+
+  text-wrap: pretty;
 }
 
 .home-content span {
@@ -99,7 +106,7 @@
   display: flex;
   gap: 0.8rem;
 
-  margin-top: 1.2rem;
+  margin-top: 1rem;
 }
 
 /* =========================
@@ -111,7 +118,7 @@
 
   gap: 1.2rem;
 
-  margin-top: 0.2rem;
+  margin-top: 0;
 }
 
 .hero-social a {
@@ -164,7 +171,7 @@
   display: flex;
   flex-direction: column;
 
-  gap: 1.5rem;
+  gap: 1.2rem;
 }
 
 /* =========================
@@ -188,9 +195,22 @@
   justify-content: center;
   align-items: center;
 
-  padding: 10px;
+  padding: 5px;
 
   border-radius: 50%;
+
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.92),
+    rgba(var(--color-primary-rgb), 0.96) 42%,
+    var(--color-primary-dark)
+  );
+
+  box-shadow:
+    0 0 0 1px rgba(255, 255, 255, 0.2),
+    0 0 22px rgba(var(--color-primary-rgb), 0.28);
+
+  isolation: isolate;
 
   transition:
     transform 0.4s ease,
@@ -232,16 +252,23 @@
 }
 
 .home-image img {
-  transition: transform 0.2s ease;
-}
-
-.home-image img {
   width: 100%;
   height: auto;
 
   display: block;
 
+  border: 1px solid rgba(255, 255, 255, 0.72);
   border-radius: 50%;
+
+  transition: transform 0.2s ease;
+}
+
+html[data-theme="day"] .home-content p {
+  color: rgba(var(--color-text-rgb), 0.82);
+}
+
+html[data-theme="day"] .home-image img {
+  border-color: rgba(255, 255, 255, 0.9);
 }
 
 /* =========================
