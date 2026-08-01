@@ -142,11 +142,6 @@ html[data-theme="day"] .home::after {
   );
 }
 
-/* Remove the Services stylesheet's dark top band. */
-html #services::before {
-  content: none;
-}
-
 /* Night section divider. */
 html:not([data-theme="day"])
   :is(#home, #about, #services, #projects, #contact)::after {
