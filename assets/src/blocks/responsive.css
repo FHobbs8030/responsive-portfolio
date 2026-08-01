@@ -151,16 +151,9 @@
    TALL DESKTOP VIEWPORTS
 ========================= */
 @media (min-width: 993px) and (min-height: 650px) {
-  #about,
   #services {
     min-height: calc(100svh - var(--header-height));
-  }
 
-  #about {
-    align-items: center;
-  }
-
-  #services {
     display: flex;
     align-items: center;
   }
