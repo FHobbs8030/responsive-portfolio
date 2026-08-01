@@ -19,29 +19,37 @@
 }
 
 .about-container {
+  width: 100%;
+  max-width: 1200px;
+
+  margin-inline: auto;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
   gap: clamp(1.5rem, 2vw, 3rem);
-
-  width: 100%;
-  max-width: 1200px;
-
-  margin-inline: auto;
 }
 
 /* =========================
    ABOUT IMAGE
 ========================= */
 .about-image {
+  --portrait-ring: rgba(255, 255, 255, 0.94);
+  --portrait-glow-rgb: 255, 82, 12;
+
+  --portrait-glow-soft: rgba(var(--portrait-glow-rgb), 0.28);
+  --portrait-glow-medium: rgba(var(--portrait-glow-rgb), 0.44);
+  --portrait-glow-strong: rgba(var(--portrait-glow-rgb), 0.72);
+  --portrait-glow-wide: rgba(var(--portrait-glow-rgb), 0.2);
+
   position: relative;
+
+  min-width: 0;
 
   display: flex;
   align-items: center;
   justify-content: center;
-
-  min-width: 0;
 
   overflow: visible;
 }
@@ -49,33 +57,21 @@
 /* =========================
    ABOUT PORTRAIT SYSTEM
 ========================= */
-
-.about-image {
-  --portrait-ring: rgba(255, 255, 255, 0.94);
-
-  --portrait-glow-rgb: 255, 82, 12;
-
-  --portrait-glow-soft: rgba(var(--portrait-glow-rgb), 0.38);
-  --portrait-glow-medium: rgba(var(--portrait-glow-rgb), 0.58);
-  --portrait-glow-strong: rgba(var(--portrait-glow-rgb), 0.82);
-  --portrait-glow-wide: rgba(var(--portrait-glow-rgb), 0.3);
-}
-
 html[data-theme="day"] .about-image {
   --portrait-ring: rgba(255, 255, 255, 0.98);
 
-  --portrait-glow-soft: rgba(var(--portrait-glow-rgb), 0.34);
-  --portrait-glow-medium: rgba(var(--portrait-glow-rgb), 0.54);
-  --portrait-glow-strong: rgba(var(--portrait-glow-rgb), 0.76);
-  --portrait-glow-wide: rgba(var(--portrait-glow-rgb), 0.26);
+  --portrait-glow-soft: rgba(var(--portrait-glow-rgb), 0.22);
+  --portrait-glow-medium: rgba(var(--portrait-glow-rgb), 0.36);
+  --portrait-glow-strong: rgba(var(--portrait-glow-rgb), 0.62);
+  --portrait-glow-wide: rgba(var(--portrait-glow-rgb), 0.16);
 }
 
-/* Wide orange aura behind the portrait. */
+/* Soft ambient orange aura behind the portrait. */
 .about-image::before {
   content: "";
 
   position: absolute;
-  inset: -18%;
+  inset: -15%;
 
   border-radius: 50%;
 
@@ -87,20 +83,21 @@ html[data-theme="day"] .about-image {
     transparent 74%
   );
 
-  -webkit-filter: blur(26px);
-  filter: blur(26px);
+  -webkit-filter: blur(22px);
+  filter: blur(22px);
 
-  opacity: 0.82;
+  opacity: 0.62;
 
-  transform: scale(0.96);
+  transform: scale(0.97);
 
-  animation: portraitAuraPulse 4.8s ease-in-out infinite;
+  animation: portraitAuraPulse 5.6s ease-in-out infinite;
 
   pointer-events: none;
+
   z-index: 0;
 }
 
-/* Orange radiation burst on hover */
+/* Stronger orange radiation burst during pointer interaction. */
 .about-image::after {
   content: "";
 
@@ -121,13 +118,15 @@ html[data-theme="day"] .about-image {
   filter: blur(20px);
 
   opacity: 0;
+
   transform: scale(0.82);
 
   pointer-events: none;
+
   z-index: 0;
 }
 
-/* White inner ring with a slowly breathing orange glow. */
+/* White portrait ring with a controlled orange glow. */
 .about-image .image-wrapper {
   position: relative;
 
@@ -136,7 +135,7 @@ html[data-theme="day"] .about-image {
 
   aspect-ratio: 1 / 1;
 
-  padding: 6px;
+  padding: 5px;
 
   overflow: visible;
 
@@ -145,8 +144,8 @@ html[data-theme="day"] .about-image {
   background: var(--portrait-ring);
 
   box-shadow:
-    0 0 14px var(--portrait-glow-soft),
-    0 0 32px var(--portrait-glow-wide);
+    0 0 12px var(--portrait-glow-soft),
+    0 0 26px var(--portrait-glow-wide);
 
   animation: portraitGlowPulse 5.5s ease-in-out infinite;
 
@@ -158,7 +157,7 @@ html[data-theme="day"] .about-image {
 }
 
 .about-image:hover .image-wrapper {
-  transform: translateY(-7px) scale(1.035);
+  transform: translateY(-5px) scale(1.025);
 
   box-shadow:
     0 0 32px var(--portrait-glow-strong),
@@ -174,67 +173,76 @@ html[data-theme="day"] .about-image {
 }
 
 .about-image img {
-  display: block;
-
   width: 100%;
   height: 100%;
 
+  display: block;
+
   object-fit: cover;
 
+  border: none;
   border-radius: 50%;
 
-  border: none;
   box-shadow: none;
 }
 
+/* =========================
+   PORTRAIT ANIMATIONS
+========================= */
 @keyframes portraitGlowPulse {
   0%,
   100% {
     box-shadow:
-      0 0 14px var(--portrait-glow-soft),
-      0 0 34px var(--portrait-glow-medium),
-      0 0 58px var(--portrait-glow-wide);
+      0 0 12px var(--portrait-glow-soft),
+      0 0 28px var(--portrait-glow-medium),
+      0 0 46px var(--portrait-glow-wide);
   }
 
   50% {
     box-shadow:
-      0 0 24px var(--portrait-glow-strong),
-      0 0 54px var(--portrait-glow-medium),
-      0 0 94px var(--portrait-glow-wide);
+      0 0 18px var(--portrait-glow-strong),
+      0 0 40px var(--portrait-glow-medium),
+      0 0 68px var(--portrait-glow-wide);
   }
 }
 
 @keyframes portraitAuraPulse {
   0%,
   100% {
-    opacity: 0.68;
-    transform: scale(0.94);
+    opacity: 0.48;
+
+    transform: scale(0.96);
   }
 
   50% {
-    opacity: 1;
-    transform: scale(1.1);
+    opacity: 0.74;
+
+    transform: scale(1.04);
   }
 }
 
 @keyframes portraitHoverBurst {
   0% {
     opacity: 0;
+
     transform: scale(0.82);
   }
 
   35% {
     opacity: 1;
+
     transform: scale(1.12);
   }
 
   70% {
     opacity: 0.82;
+
     transform: scale(1.24);
   }
 
   100% {
     opacity: 0.46;
+
     transform: scale(1.32);
   }
 }
@@ -243,38 +251,42 @@ html[data-theme="day"] .about-image {
    CONTENT
 ========================= */
 .about-content {
+  flex: 1 1 620px;
+
+  min-width: 0;
+  max-width: 680px;
+
+  padding-top: 0.25rem;
+
   display: flex;
   flex-direction: column;
   justify-content: center;
-
-  max-width: 680px;
-  min-width: 0;
-
-  padding-top: 0.75rem;
 }
 
 .about-content .heading {
-  font-size: clamp(2.7rem, 3.4vw, 3.4rem);
-  font-weight: 600;
   margin-bottom: 0.6rem;
+
+  font-size: clamp(2.7rem, 3.4vw, 3.4rem);
+  font-weight: var(--fw-semibold);
 }
 
 .about-content .heading::after {
   content: "";
+
   width: 60px;
   height: 2px;
+
   display: block;
+
   margin-top: 0.7rem;
+
   background: var(--color-primary);
+
   box-shadow: var(--glow-sm);
 }
 
 .about-content .heading span {
   color: var(--color-primary);
-}
-
-.about-content > * {
-  margin-bottom: 0;
 }
 
 .about-content p {
@@ -284,39 +296,49 @@ html[data-theme="day"] .about-image {
   line-height: 1.7;
 
   color: var(--color-text-muted);
+
+  text-wrap: pretty;
 }
 
 .about-content p + p {
-  margin-top: 1.2rem;
+  margin-top: 1.4rem;
 }
 
 /* =========================
    TECH STACK TAGS
 ========================= */
 .about-stack {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.75rem;
-  margin-top: 1rem;
-  margin-bottom: 1.4rem;
   max-width: 100%;
   min-width: 0;
+
+  margin-top: 1rem;
+  margin-bottom: 1.4rem;
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.75rem;
 }
 
 .about-stack span {
   position: relative;
+
   overflow: hidden;
+
+  padding: 0.5rem 1rem;
+
+  border: 1px solid rgba(var(--color-primary-rgb), 0.4);
+  border-radius: 20px;
+
+  background: rgba(var(--color-primary-rgb), 0.05);
+  color: var(--color-primary);
 
   font-size: var(--fs-xs);
   font-weight: var(--fw-medium);
 
-  padding: 0.5rem 1rem;
-  border-radius: 20px;
-  color: var(--color-primary);
-  border: 1px solid rgba(var(--color-primary-rgb), 0.4);
-  background: rgba(var(--color-primary-rgb), 0.05);
   -webkit-backdrop-filter: blur(8px);
   backdrop-filter: blur(8px);
+
   transition:
     transform 0.25s cubic-bezier(0.4, 0, 0.2, 1),
     box-shadow 0.25s cubic-bezier(0.4, 0, 0.2, 1),
@@ -325,16 +347,21 @@ html[data-theme="day"] .about-image {
 }
 
 .about-stack span:hover {
-  color: var(--color-text);
   background: rgba(var(--color-primary-rgb), 0.12);
+  color: var(--color-text);
 
-  box-shadow: var(--ring), var(--glow-sm), var(--glow-md);
+  box-shadow:
+    var(--ring),
+    var(--glow-sm),
+    var(--glow-md);
 }
 
 .about-stack span::after {
   content: "";
+
   position: absolute;
   inset: 0;
+
   background: linear-gradient(
     120deg,
     transparent 30%,
@@ -343,12 +370,17 @@ html[data-theme="day"] .about-image {
   );
 
   opacity: 0;
+
   transform: translateX(-100%);
-  transition: all 0.5s ease;
+
+  transition:
+    opacity 0.5s ease,
+    transform 0.5s ease;
 }
 
 .about-stack span:hover::after {
   opacity: 1;
+
   transform: translateX(100%);
 }
 
@@ -358,4 +390,15 @@ html[data-theme="day"] .about-image {
 
 .about-stack span:nth-child(even):hover {
   transform: translateY(-2px) scale(1.04);
+}
+
+/* =========================
+   DESKTOP VIEWPORT FILL
+========================= */
+@media (min-width: 769px) {
+  #about {
+    min-height: calc(100svh - var(--header-height));
+
+    align-items: center;
+  }
 }

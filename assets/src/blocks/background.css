@@ -65,8 +65,24 @@ body::before {
 
 html:not([data-theme="day"]) body::before {
   background-image:
-    linear-gradient(180deg, rgba(8, 8, 8, 0.16), rgba(8, 8, 8, 0.34)),
+    radial-gradient(
+      circle at 74% 18%,
+      rgba(var(--color-evening-accent-rgb), 0.14),
+      transparent 38%
+    ),
+    radial-gradient(
+      circle at 18% 78%,
+      rgba(var(--color-calm-accent-rgb), 0.12),
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(var(--color-bg-rgb), 0.06),
+      rgba(var(--color-bg-rgb), 0.24)
+    ),
     var(--portfolio-bg-image);
+
+  filter: brightness(1.08) contrast(0.96) saturate(1.02);
 }
 
 /* =========================
@@ -125,46 +141,44 @@ html section:nth-child(even) {
 }
 
 /* =========================
-   SECTION TRANSITIONS
+   SECTION DIVIDERS
 ========================= */
+html :is(#home, #about, #services, #projects)::after {
+  content: "";
 
-/* Prevent the Home section from fading into solid black. */
-html:not([data-theme="day"]) .home::after {
-  background: linear-gradient(to bottom, transparent, rgba(8, 8, 8, 0.08));
+  position: absolute;
+  left: clamp(1.5rem, 6vw, 7rem);
+  right: clamp(1.5rem, 6vw, 7rem);
+  bottom: 0;
+
+  width: auto;
+  height: 1px;
+
+  pointer-events: none;
+
+  z-index: 3;
 }
 
-/* Use a soft neutral transition in Day mode. */
-html[data-theme="day"] .home::after {
-  background: linear-gradient(
-    to bottom,
-    transparent,
-    rgba(194, 201, 208, 0.12)
-  );
-}
-
-/* Remove the Services stylesheet's dark top band. */
-html #services::before {
-  content: none;
-}
-
-/* Night section divider. */
+/* Night section divider */
 html:not([data-theme="day"])
-  :is(#home, #about, #services, #projects, #contact)::after {
+  :is(#home, #about, #services, #projects)::after {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(var(--color-primary-rgb), 0.12),
+    rgba(var(--color-evening-accent-rgb), 0.12),
+    rgba(var(--color-primary-rgb), 0.2),
+    rgba(var(--color-calm-accent-rgb), 0.12),
     transparent
   );
 }
 
-/* Day section divider. */
+/* Day section divider */
 html[data-theme="day"]
-  :is(#home, #about, #services, #projects, #contact)::after {
+  :is(#home, #about, #services, #projects)::after {
   background: linear-gradient(
     to right,
     transparent,
-    rgba(var(--color-primary-rgb), 0.18),
+    rgba(var(--color-primary-rgb), 0.16),
     transparent
   );
 }
@@ -172,7 +186,6 @@ html[data-theme="day"]
 /* =========================
    MOBILE BACKGROUNDS
 ========================= */
-
 @media (max-width: 768px) {
   :root {
     --portfolio-bg-image: var(--portfolio-bg-night-mobile);
@@ -184,10 +197,26 @@ html[data-theme="day"]
 
   html:not([data-theme="day"]) body::before {
     background-image:
-      linear-gradient(180deg, rgba(8, 8, 8, 0.2), rgba(8, 8, 8, 0.38)),
+      radial-gradient(
+        circle at 72% 16%,
+        rgba(var(--color-evening-accent-rgb), 0.13),
+        transparent 38%
+      ),
+      radial-gradient(
+        circle at 18% 82%,
+        rgba(var(--color-calm-accent-rgb), 0.11),
+        transparent 44%
+      ),
+      linear-gradient(
+        180deg,
+        rgba(var(--color-bg-rgb), 0.08),
+        rgba(var(--color-bg-rgb), 0.28)
+      ),
       var(--portfolio-bg-image);
 
     background-position: center;
+
+    filter: brightness(1.06) contrast(0.97) saturate(1.02);
   }
 
   html[data-theme="day"] body::before {

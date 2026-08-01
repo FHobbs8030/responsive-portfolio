@@ -2,61 +2,28 @@
    PROJECTS
 ========================= */
 #projects {
-  margin-top: 0;
-
-  padding: clamp(2.8rem, 4vw, 4.5rem) 2rem 4rem;
-
   position: relative;
   z-index: 2;
 
-  background: var(--color-surface-alt);
+  margin-top: 0;
+
+  padding: clamp(2.8rem, 4vw, 4.5rem) 2rem 4rem;
 
   isolation: isolate;
   overflow: clip;
 }
 
-/* 🔥 REMOVE global section glow */
-#projects::before {
-  content: none;
-}
-
-/* 🔥 CONTROLLED PROJECTS GLOW */
-#projects::after {
-  content: "";
-  position: absolute;
-
-  top: 10%;
-  left: 0;
-  right: 0;
-  height: 65%;
-
-  background:
-    radial-gradient(
-      circle at 30% 30%,
-      rgba(var(--color-primary-rgb), 0.06),
-      transparent 65%
-    ),
-    radial-gradient(
-      circle at 70% 80%,
-      rgba(var(--color-primary-rgb), 0.04),
-      transparent 70%
-    );
-
-  filter: blur(30px);
-  opacity: 0.45;
-
-  pointer-events: none;
-  z-index: 0;
-}
-
+/* =========================
+   PROJECTS CONTAINER
+========================= */
 .projects-container {
+  position: relative;
+  z-index: 2;
+
   width: 100%;
   max-width: 1200px;
 
   margin: 0 auto;
-
-  position: relative;
-  z-index: 2;
 }
 
 /* =========================
@@ -70,92 +37,71 @@
 }
 
 /* =========================
-   LAYOUT
+   PROJECTS LAYOUT
 ========================= */
 .projects-layout {
   display: grid;
-  grid-template-columns: 1.4fr 1fr;
+  grid-template-columns: minmax(0, 1fr);
 
-  gap: 1.5rem;
+  align-items: stretch;
 
-  align-items: start;
+  gap: clamp(1.5rem, 2vw, 2.2rem);
 }
 
 .right-column {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
 
-  gap: 1rem;
+  align-items: stretch;
+
+  gap: clamp(1.2rem, 1.8vw, 1.8rem);
 }
 
-/* =========================
-   PROJECT CARD GLOW SYSTEM
-========================= */
-.project-card {
-  position: relative;
-  border-radius: 20px;
-  background: var(--color-surface-alt);
-  z-index: 1;
-
-  transition:
-    transform 0.35s ease,
-    box-shadow 0.35s ease;
-
-  box-shadow: 0 0 0 1px var(--color-border);
-}
-
-.project-card:hover {
-  transform: translateY(-6px);
-  box-shadow: var(--ring), var(--glow-md), var(--glow-lg);
-}
-
-.project-card::before {
-  content: "";
-  position: absolute;
-  inset: -12px;
-  border-radius: 24px;
-
-  background: radial-gradient(circle, var(--glow-halo), transparent 70%);
-  opacity: 0;
-  transition: opacity 0.35s ease;
-
-  filter: blur(14px);
-  z-index: -1;
-}
-
-.project-card:hover::before {
-  opacity: 1;
+.right-column .project-card {
+  height: 100%;
 }
 
 /* =========================
    PROJECT CARD
 ========================= */
 .project-card {
+  position: relative;
+  z-index: 1;
+
   display: flex;
   flex-direction: column;
 
+  overflow: hidden;
+
+  border: 1px solid var(--color-border);
   border-radius: 1rem;
 
   background: var(--color-card);
-  border: 1px solid var(--color-border);
 
   box-shadow:
     0 8px 20px rgba(var(--color-shadow-rgb), 0.5),
     0 0 10px rgba(var(--color-primary-rgb), 0.1);
 
-  transition: all 0.3s ease;
-
-  overflow: hidden;
+  transition:
+    transform 0.35s ease,
+    border-color 0.35s ease,
+    box-shadow 0.35s ease;
 }
 
 .project-card:hover {
   transform: translateY(-5px);
 
+  border-color: rgba(var(--color-primary-rgb), 0.45);
+
   box-shadow:
+    var(--ring),
     0 20px 40px rgba(var(--color-shadow-rgb), 0.6),
     0 0 25px rgba(var(--color-primary-rgb), 0.25);
 }
 
+/* =========================
+   PROJECT IMAGE
+========================= */
 .project-card a {
   display: block;
 
@@ -166,6 +112,7 @@
   width: 100%;
 
   aspect-ratio: 16 / 9;
+
   object-fit: cover;
 
   filter: contrast(1.05) saturate(1.05) brightness(1.02);
@@ -182,7 +129,7 @@
 }
 
 /* =========================
-   IMAGE WRAPPER
+   FEATURED IMAGE WRAPPER
 ========================= */
 .project-image {
   position: relative;
@@ -210,24 +157,34 @@
 /* =========================
    FEATURED CARD
 ========================= */
+
 .project-card.featured {
-  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.35fr) minmax(30rem, 0.85fr);
+
+  min-height: 34rem;
 }
 
-.project-card.featured::after {
-  content: "";
+.project-card.featured .project-image {
+  height: 100%;
 
-  position: absolute;
+  border-radius: 0.8rem 0 0 0.8rem;
+}
 
-  left: 0;
-  right: 0;
-  bottom: -20px;
+.project-card.featured .project-image a {
+  height: 100%;
+}
 
-  height: 40px;
+.project-card.featured img {
+  width: 100%;
+  height: 100%;
+  max-height: none;
 
-  background: linear-gradient(to bottom, transparent, var(--color-surface-alt));
+  aspect-ratio: auto;
 
-  pointer-events: none;
+  object-fit: cover;
+
+  filter: brightness(0.92) contrast(1.05) saturate(1.08);
 }
 
 .project-card.featured .project-content {
@@ -244,18 +201,11 @@
   line-height: 1.65;
 }
 
-.project-card.featured img {
-  max-height: 260px;
-
-  filter: brightness(0.92) contrast(1.05) saturate(1.08);
-}
-
 /* =========================
    FEATURED BADGE
 ========================= */
 .featured-badge {
   position: absolute;
-
   top: 18px;
   left: -5px;
 
@@ -263,18 +213,10 @@
 
   overflow: hidden;
 
-  pointer-events: none;
-
-  transform: rotate(-25deg);
-
   padding: 0.55rem 3.4rem;
 
-  color: var(--color-text);
-
-  font-size: 0.78rem;
-  font-weight: 800;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  border-top: 1px solid rgba(var(--color-text-rgb), 0.15);
+  border-bottom: 1px solid rgba(var(--color-shadow-rgb), 0.3);
 
   background: linear-gradient(
     145deg,
@@ -283,21 +225,28 @@
     var(--color-primary-dark)
   );
 
-  border-top: 1px solid rgba(var(--color-text-rgb), 0.15);
-  border-bottom: 1px solid rgba(var(--color-shadow-rgb), 0.3);
+  color: var(--color-text);
+
+  font-size: 0.78rem;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 
   box-shadow:
     0 10px 22px rgba(var(--color-shadow-rgb), 0.8),
     0 0 18px rgba(var(--color-primary-rgb), 0.65),
     inset 0 1px 1px rgba(var(--color-text-rgb), 0.18),
     inset 0 -2px 6px rgba(var(--color-shadow-rgb), 0.28);
+
+  transform: rotate(-25deg);
+
+  pointer-events: none;
 }
 
 .featured-badge::before {
   content: "";
 
   position: absolute;
-
   top: 0;
   right: 0;
 
@@ -315,84 +264,97 @@
   position: absolute;
   inset: 0;
 
-  opacity: 0.9;
-
   background: linear-gradient(
     120deg,
     var(--color-shine),
     var(--color-border) 35%,
     transparent 60%
   );
+
+  opacity: 0.9;
 }
 
 /* =========================
-   CONTENT
+   PROJECT CONTENT
 ========================= */
 .project-content {
-  display: flex;
-  flex-direction: column;
   flex: 1;
 
-  padding: var(--space-lg);
+  padding: clamp(1.6rem, 1.8vw, 2.2rem);
+
+  display: flex;
+  flex-direction: column;
 }
 
 .project-content h3 {
-  font-size: var(--fs-md);
-  line-height: 1.35;
-
   display: -webkit-box;
 
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  overflow: hidden;
+
+  font-size: clamp(1.7rem, 1.35vw, 2rem);
+  line-height: 1.35;
 
   -webkit-box-orient: vertical;
-
-  overflow: hidden;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
 }
 
 .project-content p {
-  font-size: var(--fs-sm);
-  line-height: 1.65;
+  display: -webkit-box;
 
-  color: var(--color-text-muted);
+  overflow: hidden;
 
   margin-top: var(--space-sm);
 
-  display: -webkit-box;
+  color: var(--color-text-muted);
 
-  -webkit-line-clamp: 4;
-  line-clamp: 4;
+  font-size: clamp(1.35rem, 1vw, 1.55rem);
+  line-height: 1.65;
+
+  text-wrap: pretty;
 
   -webkit-box-orient: vertical;
-
-  overflow: hidden;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
 }
 
 /* =========================
-   LINKS
+   PROJECT LINKS
 ========================= */
 .project-links {
+  margin-top: auto;
+  padding-top: var(--space-md);
+
   display: flex;
   flex-wrap: wrap;
 
   gap: var(--space-sm);
+}
 
+/* =========================
+   PROJECT LINKS
+========================= */
+.project-links {
   margin-top: auto;
-
   padding-top: var(--space-md);
+
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 0.8rem;
 }
 
 .project-btn {
-  min-height: 3.8rem;
+  min-height: 3.4rem;
 
-  padding: 0.8rem 1.4rem;
+  padding: 0.75rem 1.2rem;
 
   display: inline-flex;
   align-items: center;
   justify-content: center;
 
-  border-radius: var(--radius-round);
   border: 1px solid transparent;
+  border-radius: 0.65rem;
 
   font-size: var(--fs-xs);
   font-weight: var(--fw-semibold);
@@ -408,28 +370,64 @@
 }
 
 .project-btn.live {
+  border-color: rgba(var(--color-primary-rgb), 0.7);
+
+  background: rgba(var(--color-primary-rgb), 0.88);
   color: var(--color-text);
 
-  background: rgba(var(--color-primary-rgb), 0.9);
-
-  box-shadow: 0 0 10px rgba(var(--color-primary-rgb), 0.4);
+  box-shadow:
+    0 4px 12px rgba(var(--color-shadow-rgb), 0.28),
+    0 0 8px rgba(var(--color-primary-rgb), 0.22);
 }
 
 .project-btn.live:hover {
   transform: translateY(-2px);
 
-  box-shadow: 0 0 18px rgba(var(--color-primary-rgb), 0.6);
+  background: var(--color-primary);
+
+  box-shadow:
+    0 7px 16px rgba(var(--color-shadow-rgb), 0.34),
+    0 0 12px rgba(var(--color-primary-rgb), 0.32);
 }
 
 .project-btn.code {
-  color: var(--color-text-secondary);
+  border-color: rgba(var(--color-text-rgb), 0.24);
 
-  background: transparent;
-  border: 1px solid rgba(var(--color-text-rgb), 0.2);
+  background: rgba(var(--color-text-rgb), 0.025);
+  color: var(--color-text-secondary);
 }
 
 .project-btn.code:hover {
-  color: var(--color-text);
+  transform: translateY(-2px);
 
-  border-color: rgba(var(--color-primary-rgb), 0.6);
+  border-color: rgba(var(--color-primary-rgb), 0.55);
+
+  background: rgba(var(--color-primary-rgb), 0.08);
+  color: var(--color-text);
+}
+
+/* =========================
+   PROJECTS TABLET LAYOUT
+========================= */
+@media (max-width: 992px) {
+  .project-card.featured {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: auto;
+  }
+
+  .project-card.featured .project-image {
+    height: auto;
+
+    border-radius: 0.8rem 0.8rem 0 0;
+  }
+
+  .project-card.featured .project-image a {
+    height: auto;
+  }
+
+  .project-card.featured img {
+    height: auto;
+
+    aspect-ratio: 16 / 9;
+  }
 }
