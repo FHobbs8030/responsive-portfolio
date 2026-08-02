@@ -73,7 +73,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/src/blocks/main.css?v=20260802-1" />
+    <link rel="stylesheet" href="./assets/src/blocks/main.css?v=20260802-2" />
   </head>
 
   <body>
@@ -94,8 +94,31 @@
           <span aria-hidden="true"></span>
         </button>
 
-        <a href="#home" class="logo">
-          <span>FH</span>
+        <a href="#home" class="logo brand" aria-label="Fred Hobbs — Home">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 64 64" focusable="false">
+              <circle class="brand-mark__shell" cx="32" cy="32" r="29" />
+
+              <circle class="brand-mark__ring" cx="32" cy="32" r="24" />
+
+              <path
+                class="brand-mark__glyph"
+                d="M19 18V46 M19 18H34 M19 31H31"
+              />
+
+              <path
+                class="brand-mark__glyph"
+                d="M38 18V46 M51 18V46 M38 32H51"
+              />
+
+              <path class="brand-mark__cursor" d="M43 51H53" />
+            </svg>
+          </span>
+
+          <span class="brand-copy">
+            <strong>Fred Hobbs</strong>
+            <small>Full-Stack Engineer</small>
+          </span>
         </a>
 
         <nav
