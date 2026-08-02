@@ -39,6 +39,33 @@
       })();
     </script>
 
+    <script>
+      (() => {
+        const theme = document.documentElement.dataset.theme;
+
+        const backgroundImages =
+          theme === "day"
+            ? [
+                "./assets/images/portfolio-bg-day-desktop.webp",
+                "./assets/images/portfolio-bg-day-mobile.webp",
+              ]
+            : [
+                "./assets/images/portfolio-bg-desktop.webp",
+                "./assets/images/portfolio-bg-mobile.webp",
+              ];
+
+        backgroundImages.forEach((href) => {
+          const preloadLink = document.createElement("link");
+
+          preloadLink.rel = "preload";
+          preloadLink.as = "image";
+          preloadLink.href = href;
+
+          document.head.appendChild(preloadLink);
+        });
+      })();
+    </script>
+
     <title>Fred Hobbs | Portfolio</title>
 
     <link
@@ -46,7 +73,7 @@
       rel="stylesheet"
     />
 
-    <link rel="stylesheet" href="./assets/src/blocks/main.css?v=20260801-3" />
+    <link rel="stylesheet" href="./assets/src/blocks/main.css?v=20260802-1" />
   </head>
 
   <body>
