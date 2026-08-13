@@ -397,7 +397,7 @@ html[data-theme="day"] .about-image {
 ========================= */
 @media (min-width: 769px) {
   #about {
-    min-height: calc(100svh - var(--header-height));
+    min-height: clamp(54rem, 72svh, 68rem);
 
     align-items: center;
   }

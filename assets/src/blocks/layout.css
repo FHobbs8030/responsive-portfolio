@@ -80,59 +80,21 @@
 
   flex: 0 0 auto;
 
-  filter:
-    drop-shadow(
-      0 0 0.5rem rgba(var(--color-primary-rgb), 0.42)
-    )
-    drop-shadow(
-      0 0 1.2rem rgba(var(--color-primary-rgb), 0.18)
-    );
+  filter: drop-shadow(0 0 0.5rem rgba(var(--color-primary-rgb), 0.42))
+    drop-shadow(0 0 1.2rem rgba(var(--color-primary-rgb), 0.18));
 
   transition:
     transform 0.25s ease,
     filter 0.25s ease;
 }
 
-.brand-mark svg {
+.brand-mark__image {
   display: block;
 
   width: 100%;
   height: 100%;
 
-  overflow: visible;
-}
-
-.brand-mark__shell {
-  fill: rgba(var(--color-bg-rgb), 0.9);
-
-  stroke: var(--color-primary-highlight);
-  stroke-width: 2.5;
-}
-
-.brand-mark__ring {
-  fill: none;
-
-  stroke: rgba(var(--color-primary-rgb), 0.55);
-  stroke-width: 1;
-}
-
-.brand-mark__glyph {
-  fill: none;
-
-  stroke: var(--color-primary-highlight);
-  stroke-width: 3.5;
-  stroke-linecap: round;
-  stroke-linejoin: round;
-}
-
-.brand-mark__cursor {
-  fill: none;
-
-  stroke: var(--color-primary);
-  stroke-width: 2.5;
-  stroke-linecap: round;
-
-  opacity: 0.8;
+  object-fit: contain;
 }
 
 /* =========================
@@ -198,25 +160,18 @@
   .logo:hover .brand-mark {
     transform: scale(1.06);
 
-    filter:
-      drop-shadow(
-        0 0 0.7rem rgba(var(--color-primary-rgb), 0.7)
-      )
-      drop-shadow(
-        0 0 1.8rem rgba(var(--color-primary-rgb), 0.32)
-      );
+    filter: drop-shadow(0 0 0.7rem rgba(var(--color-primary-rgb), 0.7))
+      drop-shadow(0 0 1.8rem rgba(var(--color-primary-rgb), 0.32));
   }
 
   .logo:hover .brand-copy strong {
     color: var(--color-primary-highlight);
 
-    text-shadow:
-      0 0 0.6rem rgba(var(--color-primary-rgb), 0.4);
+    text-shadow: 0 0 0.6rem rgba(var(--color-primary-rgb), 0.4);
   }
 
   .logo:hover .brand-copy small {
-    text-shadow:
-      0 0 0.8rem rgba(var(--color-primary-rgb), 0.45);
+    text-shadow: 0 0 0.8rem rgba(var(--color-primary-rgb), 0.45);
   }
 }
 
@@ -227,11 +182,6 @@
 .logo.tap-active .brand-mark {
   transform: scale(0.96);
 
-  filter:
-    drop-shadow(
-      0 0 0.6rem rgba(var(--color-primary-rgb), 0.5)
-    )
-    drop-shadow(
-      0 0 1.4rem rgba(var(--color-primary-rgb), 0.28)
-    );
+  filter: drop-shadow(0 0 0.6rem rgba(var(--color-primary-rgb), 0.5))
+    drop-shadow(0 0 1.4rem rgba(var(--color-primary-rgb), 0.28));
 }

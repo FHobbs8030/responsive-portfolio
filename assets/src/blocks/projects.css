@@ -308,8 +308,8 @@
 
   color: var(--color-text-muted);
 
-  font-size: clamp(1.35rem, 1vw, 1.55rem);
-  line-height: 1.65;
+  font-size: clamp(1.45rem, 1.05vw, 1.6rem);
+  line-height: 1.7;
 
   text-wrap: pretty;
 

@@ -831,8 +831,8 @@
   }
 
   .brand-mark {
-    width: 3.2rem;
-    height: 3.2rem;
+    width: 3.4rem;
+    height: 3.4rem;
   }
 
   .header-actions {
@@ -851,8 +851,8 @@
 ========================= */
 @media (max-width: 320px) {
   .brand-mark {
-    width: 3rem;
-    height: 3rem;
+    width: 3.2rem;
+    height: 3.2rem;
   }
 
   section {
