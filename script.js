@@ -219,27 +219,67 @@ if (typeof desktopViewportQuery.addEventListener === "function") {
   desktopViewportQuery.addListener(handleDesktopViewportChange);
 }
 
-const navObserver = new IntersectionObserver(
-  (entries) => {
-    entries.forEach((entry) => {
-      if (entry.isIntersecting) {
-        const id = entry.target.getAttribute("id");
+const setActiveNavLink = (sectionId) => {
+  if (!sectionId) return;
 
-        navLinks.forEach((link) => {
-          link.classList.remove("active");
-          if (link.getAttribute("href") === `#${id}`) {
-            link.classList.add("active");
-          }
-        });
-      }
-    });
-  },
-  { threshold: 0.6 },
+  navLinks.forEach((link) => {
+    link.classList.toggle(
+      "active",
+      link.getAttribute("href") === `#${sectionId}`,
+    );
+  });
+};
+
+const updateActiveNavLink = () => {
+  if (!sections.length) return;
+
+  const headerHeight =
+    document.querySelector(".header")?.offsetHeight ?? 0;
+
+  const activationPoint =
+    window.scrollY +
+    headerHeight +
+    Math.min(window.innerHeight * 0.28, 220);
+
+  let activeSectionId = sections[0].id;
+
+  sections.forEach((section) => {
+    if (section.offsetTop <= activationPoint) {
+      activeSectionId = section.id;
+    }
+  });
+
+  const pageBottom =
+    window.scrollY + window.innerHeight >=
+    document.documentElement.scrollHeight - 2;
+
+  if (pageBottom) {
+    activeSectionId = sections[sections.length - 1].id;
+  }
+
+  setActiveNavLink(activeSectionId);
+};
+
+let scrollSpyFrame = null;
+
+const requestActiveNavUpdate = () => {
+  if (scrollSpyFrame !== null) return;
+
+  scrollSpyFrame = window.requestAnimationFrame(() => {
+    scrollSpyFrame = null;
+    updateActiveNavLink();
+  });
+};
+
+window.addEventListener(
+  "scroll",
+  requestActiveNavUpdate,
+  { passive: true },
 );
 
-sections.forEach((section) => {
-  navObserver.observe(section);
-});
+window.addEventListener("resize", requestActiveNavUpdate);
+
+requestActiveNavUpdate();
 
 document.addEventListener("DOMContentLoaded", () => {
   const form = document.getElementById("contact-form");

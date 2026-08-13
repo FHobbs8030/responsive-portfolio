@@ -235,12 +235,20 @@ html[data-theme-preference="day"] .theme-toggle__thumb {
 /* =========================
      LINK HOVER (GLOW)
   ========================= */
-.navbar a:hover,
 .navbar a.active {
   color: var(--color-primary);
   text-shadow:
     0 0 6px rgba(var(--color-primary-rgb), 0.6),
     0 0 14px rgba(var(--color-primary-rgb), 0.4);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  .navbar a:hover {
+    color: var(--color-primary);
+    text-shadow:
+      0 0 6px rgba(var(--color-primary-rgb), 0.6),
+      0 0 14px rgba(var(--color-primary-rgb), 0.4);
+  }
 }
 
 .navbar a::after {
@@ -254,7 +262,6 @@ html[data-theme-preference="day"] .theme-toggle__thumb {
   transition: width 0.3s ease;
 }
 
-.navbar a:hover::after,
 .navbar a.active::after {
   width: 100%;
 }

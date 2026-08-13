@@ -216,7 +216,7 @@ html[data-theme="day"] .service-box:hover {
 ========================= */
 @media (min-width: 769px) {
   #services {
-    min-height: calc(100svh - var(--header-height));
+    min-height: clamp(54rem, 72svh, 68rem);
 
     display: flex;
     align-items: center;
